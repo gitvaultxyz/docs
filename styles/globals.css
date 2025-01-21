@@ -1,0 +1,182 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Syntax Highlighting */
+[data-rehype-pretty-code-fragment] .line .comment {
+  color: #8b949e;
+}
+
+[data-rehype-pretty-code-fragment] .line .keyword {
+  color: #ff7b72;
+}
+
+[data-rehype-pretty-code-fragment] .line .string {
+  color: #a5d6ff;
+}
+
+[data-rehype-pretty-code-fragment] .line .number {
+  color: #79c0ff;
+}
+
+[data-rehype-pretty-code-fragment] .line .function {
+  color: #d2a8ff;
+}
+
+[data-rehype-pretty-code-fragment] .line .tag {
+  color: #7ee787;
+}
+
+[data-rehype-pretty-code-fragment] .line .attr-name {
+  color: #d2a8ff;
+}
+
+[data-rehype-pretty-code-fragment] .line .attr-value {
+  color: #a5d6ff;
+}
+
+[data-rehype-pretty-code-fragment] .line .property {
+  color: #79c0ff;
+}
+
+[data-rehype-pretty-code-fragment] .line .punctuation {
+  color: #c9d1d9;
+}
+
+[data-rehype-pretty-code-fragment] .line .operator {
+  color: #ff7b72;
+}
+
+[data-rehype-pretty-code-fragment] .line .variable {
+  color: #ffa657;
+}
+
+@layer base {
+  :root {
+    --background: 240 3% 92%; /* #E8E8EA */
+    --foreground: 0 0% 16%; /* #282828 */
+    --card: 0 0% 100%; /* #FFFFFF */
+    --card-foreground: 0 0% 16%; /* #282828 */
+    --popover: 0 0% 100%; /* #FFFFFF */
+    --popover-foreground: 0 0% 16%; /* #282828 */
+    --primary: 0 0% 16%; /* #282828 */
+    --primary-foreground: 0 0% 100%; /* #FFFFFF */
+    --secondary: 0 0% 100%; /* #FFFFFF */
+    --secondary-foreground: 0 0% 16%; /* #282828 */
+    --muted: 0 0% 100%; /* #FFFFFF */
+    --muted-foreground: 0 0% 16%; /* #282828 with opacity */
+    --accent: 0 0% 100%; /* #FFFFFF */
+    --accent-foreground: 0 0% 16%; /* #282828 */
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 100%; /* #FFFFFF */
+    --input: 240 5.9% 90%;
+    --ring: 0 0% 16%; /* #282828 */
+    --radius: 0.5rem;
+  }
+ 
+  .dark {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 5.9% 10%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
+  }
+}
+ 
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+[data-rehype-pretty-code-fragment] {
+  @apply relative;
+}
+
+[data-rehype-pretty-code-fragment] code {
+  @apply grid min-w-full break-words rounded-none border-0 bg-transparent p-0;
+  counter-reset: line;
+  box-decoration-break: clone;
+}
+
+[data-rehype-pretty-code-fragment] .line {
+  @apply px-4 min-h-[1rem] py-0.5 w-full inline-block;
+}
+
+[data-rehype-pretty-code-fragment] [data-line-numbers] .line {
+  @apply px-2;
+  counter-increment: line;
+}
+
+[data-rehype-pretty-code-fragment] [data-line-numbers] > .line::before {
+  @apply text-zinc-50/40 text-xs;
+  content: counter(line);
+  display: inline-block;
+  width: 1.8rem;
+  margin-right: 1.4rem;
+  text-align: right;
+}
+
+[data-rehype-pretty-code-fragment] .line--highlighted {
+  @apply bg-zinc-700/50;
+}
+
+[data-rehype-pretty-code-fragment] .line-highlighted span {
+  @apply relative;
+}
+
+[data-rehype-pretty-code-fragment] .word--highlighted {
+  @apply rounded-md bg-zinc-700/50 border-zinc-700/70 p-1;
+}
+
+.dark [data-rehype-pretty-code-fragment] .word--highlighted {
+  @apply bg-zinc-900;
+}
+
+[data-rehype-pretty-code-title] {
+  @apply mt-4 px-4 py-2 text-sm font-medium;
+}
+
+[data-rehype-pretty-code-title] + pre {
+  @apply mt-0;
+}
+
+[data-rehype-pretty-code-fragment] .line-numbers {
+  @apply absolute left-0 top-0 w-12 text-gray-700;
+}
+
+[data-rehype-pretty-code-fragment] .line-numbers > span {
+  @apply block text-right pr-4 text-xs;
+}
+
+[data-rehype-pretty-code-fragment] code {
+  @apply text-sm font-mono;
+}
+
+pre {
+  @apply my-4 overflow-x-auto rounded-lg border bg-zinc-950 px-4 py-4;
+}
+
+pre > code {
+  @apply relative grid min-w-full break-words rounded-none border-0 bg-transparent p-0 text-sm text-white;
+  counter-reset: line;
+  box-decoration-break: clone;
+}

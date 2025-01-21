@@ -1,0 +1,258 @@
+# Customization Guide
+
+This guide will help you customize every aspect of your documentation site, from themes and layouts to components and content.
+
+## Theme Customization
+
+The theme system allows you to customize colors, typography, and other visual aspects of your site. All theme options are configured in `docsConfig.js`.
+
+### Colors
+
+```js
+theme: {
+  colors: {
+    primary: '#0070f3',
+    background: '#E8E8EA',
+    text: '#292929',
+    border: '#FFFFFF',
+    dark: {
+      background: '#1A1A1A',
+      text: '#FFFFFF',
+      border: '#333333'
+    }
+  }
+}
+```
+
+### Typography
+
+```js
+typography: {
+  fontFamily: {
+    sans: 'Inter, sans-serif',
+    mono: 'JetBrains Mono, monospace',
+    heading: 'Cal Sans, sans-serif'
+  },
+  fontSize: {
+    h1: '2.5rem',
+    h2: '2rem',
+    h3: '1.5rem',
+    base: '1rem'
+  }
+}
+```
+
+## Layout Customization
+
+Control the overall layout of your documentation site:
+
+```js
+layout: {
+  maxWidth: '90rem',
+  contentWidth: '4xl',
+  gap: '1rem',
+  padding: '1.5rem'
+}
+```
+
+## Landing Page Customization
+
+The landing page is fully customizable through the configuration:
+
+```js
+landing: {
+  hero: {
+    title: 'Your Custom Title',
+    description: 'Your custom description',
+    buttons: [
+      {
+        text: 'Get started',
+        href: '/introduction',
+        variant: 'default'
+      }
+    ]
+  },
+  features: [
+    {
+      title: 'Feature Title',
+      description: 'Feature description',
+      image: '/feature.png',
+      href: '/feature'
+    }
+  ]
+}
+```
+
+## Navigation Customization
+
+### Header Navigation
+
+Configure the top navigation bar:
+
+```js
+navigation: {
+  header: {
+    logo: '/logo.svg',
+    height: '4rem',
+    sticky: true,
+    mobileMenu: true
+  }
+}
+```
+
+### Sidebar Navigation
+
+Customize the sidebar behavior and appearance:
+
+```js
+sidebar: {
+  width: '240px',
+  collapsible: true,
+  defaultCollapsed: false
+}
+```
+
+### Table of Contents
+
+Configure the "On This Page" navigation:
+
+```js
+tableOfContents: {
+  enabled: true,
+  depth: 3,
+  scrollspy: true,
+  smooth: true
+}
+```
+
+## Component Customization
+
+### Cards
+
+Customize the appearance of cards:
+
+```js
+components: {
+  card: {
+    borderRadius: '0.5rem',
+    borderWidth: '4px',
+    animation: {
+      hover: true,
+      duration: '0.3s'
+    }
+  }
+}
+```
+
+### Buttons
+
+Define button variants and sizes:
+
+```js
+button: {
+  variants: {
+    default: {
+      bg: 'primary',
+      text: 'white',
+      hover: { opacity: 0.9 }
+    },
+    outline: {
+      border: '1px solid',
+      hover: { bg: 'primary' }
+    }
+  },
+  sizes: {
+    sm: { height: '2rem', px: '1rem' },
+    lg: { height: '3rem', px: '2rem' }
+  }
+}
+```
+
+## Content Customization
+
+### MDX Components
+
+Add custom MDX components:
+
+```js
+content: {
+  mdx: {
+    components: {
+      // Your custom components here
+    }
+  }
+}
+```
+
+### Code Blocks
+
+Customize code block appearance and features:
+
+```js
+codeBlocks: {
+  theme: 'github-dark',
+  lineNumbers: true,
+  copyButton: true,
+  languages: ['js', 'jsx', 'ts', 'tsx', 'bash'],
+  highlightStyle: {
+    background: '#2E2E2E',
+    borderRadius: '0.5rem'
+  }
+}
+```
+
+## Best Practices
+
+1. **Maintain Consistency**: Keep your customizations consistent across your documentation site.
+2. **Color Accessibility**: Ensure your color choices maintain good contrast ratios.
+3. **Responsive Design**: Test your customizations across different screen sizes.
+4. **Performance**: Be mindful of performance when adding custom components or styles.
+5. **Documentation**: Keep track of your customizations and document any special configurations.
+
+## Examples
+
+### Custom Theme Example
+
+Here's an example of a custom theme configuration:
+
+```js
+theme: {
+  colors: {
+    primary: '#6366f1',
+    background: '#ffffff',
+    text: '#1f2937',
+    border: '#e5e7eb',
+    dark: {
+      background: '#111827',
+      text: '#f9fafb',
+      border: '#374151'
+    }
+  },
+  typography: {
+    fontFamily: {
+      sans: 'Roboto, sans-serif',
+      mono: 'Fira Code, monospace',
+      heading: 'Poppins, sans-serif'
+    }
+  }
+}
+```
+
+### Custom Layout Example
+
+Example of a custom layout configuration:
+
+```js
+layout: {
+  maxWidth: '80rem',
+  contentWidth: '3xl',
+  gap: '2rem',
+  padding: '2rem'
+}
+```
+
+## Next Steps
+
+- Explore the [Components](/components) section to see all available components
+- Learn about [MDX Support](/features/mdx) for advanced content customization
+- Check out [Theming](/features/theming) for more detailed theme customization options 

@@ -1,0 +1,244 @@
+---
+title: Components
+description: Explore the built-in components available in the documentation framework.
+tags: ["components", "ui", "reference"]
+---
+
+# Components
+
+The framework includes a set of pre-built components to help you create beautiful documentation pages.
+
+## Alert
+
+Use alerts to highlight important information:
+
+```jsx
+<Alert>
+  This is a default alert
+</Alert>
+
+<Alert variant="warning">
+  This is a warning alert
+</Alert>
+
+<Alert variant="destructive">
+  This is a destructive alert
+</Alert>
+```
+
+### Props
+
+- `variant`: "default" | "warning" | "destructive"
+- `children`: React.ReactNode
+
+## Button
+
+Buttons for actions and links:
+
+```jsx
+<Button>Default Button</Button>
+
+<Button variant="secondary">
+  Secondary Button
+</Button>
+
+<Button variant="outline">
+  Outline Button
+</Button>
+
+<Button variant="ghost">
+  Ghost Button
+</Button>
+```
+
+### Props
+
+- `variant`: "default" | "secondary" | "outline" | "ghost"
+- `size`: "default" | "sm" | "lg"
+- `asChild`: boolean - Render as child component (e.g., Link)
+- `children`: React.ReactNode
+
+## Card
+
+Cards for grouping related content:
+
+```jsx
+<Card>
+  <CardHeader>
+    <CardTitle>Card Title</CardTitle>
+    <CardDescription>Card description here</CardDescription>
+  </CardHeader>
+  <CardContent>
+    Main content goes here
+  </CardContent>
+  <CardFooter>
+    Footer content
+  </CardFooter>
+</Card>
+```
+
+### Props
+
+- `className`: string - Additional CSS classes
+- `children`: React.ReactNode
+
+## Tabs
+
+Create tabbed interfaces:
+
+```jsx
+<Tabs defaultValue="tab1">
+  <TabsList>
+    <TabsTrigger value="tab1">Tab 1</TabsTrigger>
+    <TabsTrigger value="tab2">Tab 2</TabsTrigger>
+  </TabsList>
+  <TabsContent value="tab1">
+    Content for tab 1
+  </TabsContent>
+  <TabsContent value="tab2">
+    Content for tab 2
+  </TabsContent>
+</Tabs>
+```
+
+### Props
+
+- `defaultValue`: string - Initial active tab
+- `value`: string - Controlled value
+- `onValueChange`: (value: string) => void
+- `children`: React.ReactNode
+
+## Code
+
+Display code with syntax highlighting:
+
+```jsx
+<Code language="javascript">
+  function hello() {
+    console.log('Hello, World!')
+  }
+</Code>
+```
+
+### Props
+
+- `language`: string - Programming language
+- `showLineNumbers`: boolean
+- `highlightLines`: number[]
+- `filename`: string
+- `children`: string
+
+## Table
+
+Structured data tables:
+
+```jsx
+<Table>
+  <TableHeader>
+    <TableRow>
+      <TableHead>Header 1</TableHead>
+      <TableHead>Header 2</TableHead>
+    </TableRow>
+  </TableHeader>
+  <TableBody>
+    <TableRow>
+      <TableCell>Cell 1</TableCell>
+      <TableCell>Cell 2</TableCell>
+    </TableRow>
+  </TableBody>
+</Table>
+```
+
+### Props
+
+- `className`: string - Additional CSS classes
+- `children`: React.ReactNode
+
+## Separator
+
+Visual dividers:
+
+```jsx
+<Separator />
+<Separator orientation="vertical" />
+```
+
+### Props
+
+- `orientation`: "horizontal" | "vertical"
+- `className`: string - Additional CSS classes
+
+## Badge
+
+Status indicators and labels:
+
+```jsx
+<Badge>Default</Badge>
+<Badge variant="secondary">Secondary</Badge>
+<Badge variant="outline">Outline</Badge>
+```
+
+### Props
+
+- `variant`: "default" | "secondary" | "outline"
+- `children`: React.ReactNode
+
+## ScrollArea
+
+Customizable scrollable areas:
+
+```jsx
+<ScrollArea className="h-[200px]">
+  Content that will scroll
+</ScrollArea>
+```
+
+### Props
+
+- `className`: string - Additional CSS classes
+- `children`: React.ReactNode
+
+## Sheet
+
+Modal dialogs and sidebars:
+
+```jsx
+<Sheet>
+  <SheetTrigger>Open Sheet</SheetTrigger>
+  <SheetContent>
+    <SheetHeader>
+      <SheetTitle>Sheet Title</SheetTitle>
+      <SheetDescription>Sheet description here</SheetDescription>
+    </SheetHeader>
+    Sheet content
+  </SheetContent>
+</Sheet>
+```
+
+### Props
+
+- `side`: "top" | "right" | "bottom" | "left"
+- `children`: React.ReactNode
+
+## Best Practices
+
+1. **Consistency**: Use components consistently throughout your documentation
+2. **Accessibility**: Ensure proper ARIA labels and keyboard navigation
+3. **Responsive Design**: Test components across different screen sizes
+4. **Performance**: Use components efficiently to maintain fast page loads
+5. **Customization**: Extend components through className prop when needed
+
+## Customization
+
+All components can be customized through:
+
+1. **Tailwind Classes**: Add custom classes via className prop
+2. **Theme Configuration**: Modify colors, spacing, and other theme values
+3. **Component Overrides**: Create custom variants in your theme config
+4. **CSS Variables**: Override CSS variables for fine-grained control
+
+## Next Steps
+
+- Learn about [MDX Support](/features/mdx)
+- Explore [Theming](/guides/theming)
+- Check out [Configuration](/configuration) options 

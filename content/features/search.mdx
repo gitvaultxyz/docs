@@ -1,0 +1,237 @@
+---
+title: Search
+description: Learn how to implement and configure search functionality in your documentation.
+tags: ["features", "search", "algolia"]
+---
+
+# Search
+
+The framework includes built-in search functionality powered by Algolia DocSearch, providing fast and accurate content search across your documentation.
+
+## Setup
+
+### 1. Create Algolia Account
+
+First, sign up for a free [Algolia account](https://www.algolia.com/doc/guides/getting-started/quick-start/) and create a new application.
+
+### 2. Configure Environment Variables
+
+Add your Algolia credentials to `.env.local`:
+
+```bash
+NEXT_PUBLIC_ALGOLIA_APP_ID=your_app_id
+NEXT_PUBLIC_ALGOLIA_SEARCH_API_KEY=your_search_api_key
+NEXT_PUBLIC_ALGOLIA_INDEX_NAME=your_index_name
+```
+
+### 3. Configure DocSearch
+
+Update your `docsConfig.js` to include search configuration:
+
+```js
+export const docsConfig = {
+  search: {
+    provider: 'algolia',
+    options: {
+      appId: process.env.NEXT_PUBLIC_ALGOLIA_APP_ID,
+      apiKey: process.env.NEXT_PUBLIC_ALGOLIA_SEARCH_API_KEY,
+      indexName: process.env.NEXT_PUBLIC_ALGOLIA_INDEX_NAME,
+    },
+  },
+}
+```
+
+## Usage
+
+### Search Modal
+
+The search modal can be opened using:
+- Keyboard shortcut: `⌘K` (Mac) or `Ctrl+K` (Windows)
+- Click the search icon in the header
+- Focus the search input
+
+```jsx
+import { useSearch } from '@/hooks/use-search'
+
+function SearchButton() {
+  const { onOpen } = useSearch()
+  
+  return (
+    <button onClick={onOpen}>
+      Search
+    </button>
+  )
+}
+```
+
+### Search Results
+
+Results are displayed in a modal with:
+- Page title and section
+- Content preview
+- Highlighted matching terms
+- Keyboard navigation support
+
+## Customization
+
+### Search Modal Appearance
+
+Customize the search modal in your theme:
+
+```js
+export const docsConfig = {
+  search: {
+    modal: {
+      width: 'max-w-2xl',
+      height: 'h-[80vh]',
+      placement: 'top',
+    },
+  },
+}
+```
+
+### Result Styling
+
+Style search results using Tailwind classes:
+
+```jsx
+<div className="search-result">
+  <h3 className="text-lg font-semibold">
+    {hit.title}
+  </h3>
+  <p className="text-sm text-muted-foreground">
+    {hit.description}
+  </p>
+</div>
+```
+
+### Keyboard Shortcuts
+
+Configure custom keyboard shortcuts:
+
+```js
+export const docsConfig = {
+  search: {
+    shortcuts: {
+      open: ['⌘', 'K'],
+      close: ['Esc'],
+      navigate: ['↑', '↓'],
+      select: ['Enter'],
+    },
+  },
+}
+```
+
+## Advanced Configuration
+
+### Custom Search Parameters
+
+Configure Algolia search parameters:
+
+```js
+export const docsConfig = {
+  search: {
+    options: {
+      searchParameters: {
+        attributesToRetrieve: [
+          'title',
+          'description',
+          'content',
+          'url',
+        ],
+        attributesToHighlight: [
+          'title',
+          'description',
+          'content',
+        ],
+        snippetEllipsisText: '...',
+        distinct: true,
+      },
+    },
+  },
+}
+```
+
+### Custom Hit Component
+
+Create a custom hit component:
+
+```jsx
+function CustomHit({ hit, components }) {
+  return (
+    <div className="p-4 hover:bg-muted">
+      <h3 className="text-lg font-semibold">
+        <components.Highlight hit={hit} attribute="title" />
+      </h3>
+      <p className="text-sm text-muted-foreground">
+        <components.Snippet hit={hit} attribute="content" />
+      </p>
+    </div>
+  )
+}
+
+export const docsConfig = {
+  search: {
+    components: {
+      Hit: CustomHit,
+    },
+  },
+}
+```
+
+### Multiple Indices
+
+Search across multiple indices:
+
+```js
+export const docsConfig = {
+  search: {
+    options: {
+      indices: [
+        {
+          name: 'docs',
+          title: 'Documentation',
+        },
+        {
+          name: 'blog',
+          title: 'Blog Posts',
+        },
+      ],
+    },
+  },
+}
+```
+
+## Best Practices
+
+1. **Content Structure**: Organize content with clear headings and sections
+2. **Metadata**: Include descriptive titles and descriptions
+3. **Index Updates**: Keep search index in sync with content changes
+4. **Performance**: Optimize search parameters for speed
+5. **Accessibility**: Ensure keyboard navigation works properly
+6. **Mobile**: Test search experience on mobile devices
+
+## Troubleshooting
+
+### Common Issues
+
+1. **Search Not Working**
+   - Check Algolia credentials
+   - Verify index exists and has content
+   - Check browser console for errors
+
+2. **Results Not Updated**
+   - Rebuild and reindex content
+   - Clear browser cache
+   - Check indexing configuration
+
+3. **Performance Issues**
+   - Optimize search parameters
+   - Reduce number of searchable attributes
+   - Use distinct results
+
+## Next Steps
+
+- Learn about [MDX Support](/features/mdx)
+- Explore [Components](/components)
+- Check out [Configuration](/configuration) options 

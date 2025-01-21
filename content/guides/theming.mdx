@@ -1,0 +1,279 @@
+---
+title: Theming
+description: Learn how to customize the look and feel of your documentation site.
+tags: ["guides", "theming", "customization"]
+---
+
+# Theming
+
+The framework provides extensive theming options to customize the appearance of your documentation site.
+
+## Theme Configuration
+
+The main theme configuration is managed through `docsConfig.js`:
+
+```js
+export const docsConfig = {
+  theme: {
+    // Primary accent color
+    accentColor: '#0070f3',
+    
+    // Typography
+    font: {
+      sans: 'Inter',
+      mono: 'JetBrains Mono',
+    },
+    
+    // Border radius
+    radius: '0.5rem',
+  }
+}
+```
+
+## Colors
+
+### Base Colors
+
+Colors are defined using CSS variables in `styles/globals.css`:
+
+```css
+:root {
+  /* Light mode */
+  --background: 0 0% 100%;
+  --foreground: 0 0% 16%;
+  --card: 0 0% 100%;
+  --card-foreground: 0 0% 16%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 0 0% 16%;
+  --primary: 221.2 83.2% 53.3%;
+  --primary-foreground: 210 40% 98%;
+  --secondary: 210 40% 96.1%;
+  --secondary-foreground: 0 0% 16%;
+  --muted: 210 40% 96.1%;
+  --muted-foreground: 215.4 16.3% 46.9%;
+  --accent: 210 40% 96.1%;
+  --accent-foreground: 0 0% 16%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 210 40% 98%;
+  --border: 0 0% 100%;
+  --input: 214.3 31.8% 91.4%;
+  --ring: 221.2 83.2% 53.3%;
+
+  /* Dark mode */
+  .dark {
+    --background: 0 0% 8%;
+    --foreground: 210 40% 98%;
+    --card: 0 0% 8%;
+    --card-foreground: 210 40% 98%;
+    --popover: 0 0% 8%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 217.2 91.2% 59.8%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 224.3 76.3% 48%;
+  }
+}
+```
+
+### Using Colors
+
+Access theme colors in your components:
+
+```jsx
+<div className="bg-background text-foreground">
+  Content
+</div>
+
+<div className="bg-primary text-primary-foreground">
+  Primary button
+</div>
+```
+
+## Typography
+
+### Font Family
+
+Configure fonts in `tailwind.config.js`:
+
+```js
+module.exports = {
+  theme: {
+    extend: {
+      fontFamily: {
+        sans: ['var(--font-sans)'],
+        mono: ['var(--font-mono)'],
+      },
+    },
+  },
+}
+```
+
+### Font Sizes
+
+Default font sizes are available through Tailwind classes:
+
+```jsx
+<h1 className="text-4xl font-bold">
+  Large Heading
+</h1>
+
+<p className="text-base">
+  Normal text
+</p>
+
+<code className="text-sm font-mono">
+  Code text
+</code>
+```
+
+## Component Themes
+
+### Cards
+
+Customize card appearance:
+
+```jsx
+<Card className="border-primary bg-card">
+  <CardHeader className="space-y-1">
+    <CardTitle className="text-2xl">
+      Card Title
+    </CardTitle>
+  </CardHeader>
+</Card>
+```
+
+### Buttons
+
+Create custom button variants in `tailwind.config.js`:
+
+```js
+module.exports = {
+  theme: {
+    extend: {
+      button: {
+        custom: {
+          background: 'var(--custom-button-bg)',
+          color: 'var(--custom-button-text)',
+        },
+      },
+    },
+  },
+}
+```
+
+Use in components:
+
+```jsx
+<Button variant="custom">
+  Custom Button
+</Button>
+```
+
+## Dark Mode
+
+The framework includes built-in dark mode support using `next-themes`:
+
+```jsx
+import { useTheme } from 'next-themes'
+
+function ThemeToggle() {
+  const { theme, setTheme } = useTheme()
+  
+  return (
+    <button onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}>
+      Toggle theme
+    </button>
+  )
+}
+```
+
+## Responsive Design
+
+### Breakpoints
+
+Default breakpoints:
+
+- `sm`: 640px
+- `md`: 768px
+- `lg`: 1024px
+- `xl`: 1280px
+- `2xl`: 1536px
+
+Use in components:
+
+```jsx
+<div className="px-4 md:px-6 lg:px-8">
+  Responsive padding
+</div>
+```
+
+### Container Sizes
+
+Configure max-widths in `tailwind.config.js`:
+
+```js
+module.exports = {
+  theme: {
+    extend: {
+      maxWidth: {
+        content: '70rem',
+        sidebar: '16rem',
+      },
+    },
+  },
+}
+```
+
+## Best Practices
+
+1. **CSS Variables**: Use CSS variables for values that need to change with theme
+2. **Color Contrast**: Ensure sufficient contrast between background and text
+3. **Responsive Testing**: Test layouts across different screen sizes
+4. **Dark Mode**: Always test both light and dark themes
+5. **Typography Scale**: Maintain consistent type scale across the site
+6. **Component Variants**: Create reusable component variants for common patterns
+
+## Customization Examples
+
+### Custom Card Style
+
+```jsx
+<Card className="bg-gradient-to-r from-primary to-primary-dark">
+  <CardHeader>
+    <CardTitle className="text-white">
+      Gradient Card
+    </CardTitle>
+  </CardHeader>
+</Card>
+```
+
+### Custom Alert Style
+
+```jsx
+<Alert className="border-l-4 border-l-primary">
+  Custom styled alert
+</Alert>
+```
+
+### Custom Button Style
+
+```jsx
+<Button className="bg-gradient-to-r from-pink-500 to-purple-500 hover:from-pink-600 hover:to-purple-600">
+  Gradient Button
+</Button>
+```
+
+## Next Steps
+
+- Explore [Components](/components)
+- Learn about [MDX Support](/features/mdx)
+- Check out [Configuration](/configuration) options 

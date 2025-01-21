@@ -1,0 +1,138 @@
+---
+title: Button
+description: Interactive button component with various styles and states.
+---
+
+# Button
+
+A flexible button component that supports various styles, sizes, and states.
+
+## Usage
+
+```jsx
+import { Button } from "@/components/ui/button"
+
+export default function Example() {
+  return (
+    <Button variant="default">
+      Click me
+    </Button>
+  )
+}
+```
+
+## Examples
+
+### Variants
+
+Buttons come in different variants to suit your needs:
+
+```jsx
+<Button variant="default">Default</Button>
+<Button variant="destructive">Destructive</Button>
+<Button variant="outline">Outline</Button>
+<Button variant="secondary">Secondary</Button>
+<Button variant="ghost">Ghost</Button>
+<Button variant="link">Link</Button>
+```
+
+### Sizes
+
+Available in different sizes:
+
+```jsx
+<Button size="default">Default</Button>
+<Button size="sm">Small</Button>
+<Button size="lg">Large</Button>
+<Button size="icon">
+  <PlusIcon className="h-4 w-4" />
+</Button>
+```
+
+### States
+
+Buttons support various states:
+
+```jsx
+<Button>Default</Button>
+<Button disabled>Disabled</Button>
+<Button loading>Loading</Button>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `variant` | `"default" \| "destructive" \| "outline" \| "secondary" \| "ghost" \| "link"` | `"default"` | The visual style of the button |
+| `size` | `"default" \| "sm" \| "lg" \| "icon"` | `"default"` | The size of the button |
+| `asChild` | `boolean` | `false` | Whether to render as a child component |
+| `disabled` | `boolean` | `false` | Whether the button is disabled |
+| `loading` | `boolean` | `false` | Whether to show a loading state |
+
+## Examples
+
+### With Icon
+
+```jsx
+import { Button } from "@/components/ui/button"
+import { Mail } from "lucide-react"
+
+export default function IconExample() {
+  return (
+    <Button>
+      <Mail className="mr-2 h-4 w-4" />
+      Login with Email
+    </Button>
+  )
+}
+```
+
+### Loading State
+
+```jsx
+import { Button } from "@/components/ui/button"
+import { ReloadIcon } from "@radix-ui/react-icons"
+
+export default function LoadingExample() {
+  return (
+    <Button disabled>
+      <ReloadIcon className="mr-2 h-4 w-4 animate-spin" />
+      Please wait
+    </Button>
+  )
+}
+```
+
+### As Link
+
+```jsx
+import { Button } from "@/components/ui/button"
+import Link from "next/link"
+
+export default function LinkExample() {
+  return (
+    <Button asChild>
+      <Link href="/login">Login</Link>
+    </Button>
+  )
+}
+```
+
+## Design Considerations
+
+- Use the `default` variant for primary actions
+- Use the `destructive` variant for dangerous actions
+- Use the `outline` or `ghost` variants for secondary actions
+- Always provide feedback for loading states
+- Include icons to enhance visual communication
+- Ensure proper spacing between button groups
+
+## Accessibility
+
+The button component follows WAI-ARIA guidelines:
+
+- Uses native `button` element when possible
+- Supports keyboard navigation
+- Includes proper ARIA attributes
+- Maintains sufficient color contrast
+- Provides visual feedback for all states 

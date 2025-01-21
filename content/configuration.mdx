@@ -1,0 +1,295 @@
+---
+title: Configuration
+description: Learn how to configure your documentation site using the configuration file.
+tags: ["configuration", "setup"]
+---
+
+# Configuration
+
+This guide explains all the configuration options available in the documentation framework.
+
+## Overview
+
+All configuration is managed through the `config/docs.js` file, which exports a single object containing all site configuration options.
+
+## Site Configuration
+
+Configure basic site information:
+
+```js
+export const docsConfig = {
+  site: {
+    title: 'Your Documentation',
+    description: 'Your site description',
+    logo: {
+      light: '/logo-light.svg',  // Logo for light mode
+      dark: '/logo-dark.svg',    // Logo for dark mode
+    },
+  },
+}
+```
+
+## Theme Configuration
+
+Customize the visual appearance:
+
+```js
+theme: {
+  accentColor: '#0070f3',
+  font: {
+    sans: 'Inter',
+    mono: 'JetBrains Mono',
+  },
+  radius: '0.5rem',
+  colors: {
+    light: {
+      background: '#E8E8EA',
+      text: '#292929',
+      border: '#FFFFFF',
+    },
+    dark: {
+      background: '#1A1A1A',
+      text: '#FFFFFF',
+      border: '#333333',
+    },
+  },
+}
+```
+
+## Landing Page Configuration
+
+Customize the landing page content:
+
+```js
+landing: {
+  hero: {
+    title: 'Modern Documentation Framework',
+    description: 'Create beautiful documentation sites with ease',
+    buttons: [
+      {
+        text: 'Get Started',
+        href: '/introduction',
+        variant: 'default',
+      },
+      {
+        text: 'View on GitHub',
+        href: 'https://github.com/yourusername/docs',
+        variant: 'outline',
+      },
+    ],
+  },
+  bentoGrid: [
+    {
+      type: 'image',
+      title: 'Beautiful UI',
+      description: 'Modern and clean user interface',
+      image: '/card1.png',
+      href: '/features/ui',
+    },
+    {
+      type: 'video',
+      title: 'Video Tutorial',
+      description: 'Learn how to use the framework',
+      youtube: 'https://youtube.com/watch?v=...',
+      href: '/guides/tutorial',
+    },
+  ],
+}
+```
+
+## Navigation Configuration
+
+Configure the navigation elements:
+
+```js
+navigation: {
+  links: [
+    {
+      title: 'Documentation',
+      href: '/introduction',
+    },
+    {
+      title: 'GitHub',
+      href: 'https://github.com/yourusername/docs',
+      external: true,
+    },
+  ],
+}
+```
+
+## Sidebar Configuration
+
+Configure the documentation sidebar:
+
+```js
+sidebar: {
+  groups: [
+    {
+      title: 'Getting Started',
+      items: [
+        {
+          title: 'Introduction',
+          href: '/introduction',
+          icon: 'book',  // Optional icon
+        },
+        {
+          title: 'Installation',
+          href: '/installation',
+          icon: 'rocket',
+        },
+      ],
+    },
+    {
+      title: 'Features',
+      items: [
+        {
+          title: 'MDX Support',
+          href: '/features/mdx',
+          icon: 'fileText',
+        },
+      ],
+    },
+  ],
+}
+```
+
+## Component Configuration
+
+Customize default component settings:
+
+```js
+components: {
+  card: {
+    radius: '0.5rem',
+    shadow: 'sm',
+    hover: true,
+  },
+  button: {
+    radius: '0.5rem',
+    shadow: 'sm',
+    variants: {
+      default: {
+        bg: 'primary',
+        text: 'white',
+      },
+      outline: {
+        border: '1px',
+        text: 'primary',
+      },
+    },
+  },
+}
+```
+
+## Content Configuration
+
+Configure content-related features:
+
+```js
+content: {
+  mdx: {
+    components: {
+      h1: 'CustomH1Component',
+      pre: 'CustomCodeBlock',
+    },
+  },
+  codeBlocks: {
+    theme: 'github-dark',
+    lineNumbers: true,
+    copyButton: true,
+  },
+  tableOfContents: {
+    minHeadings: 3,
+    depth: 3,
+    scrollspy: true,
+  },
+}
+```
+
+## Plugin Configuration
+
+Add and configure plugins:
+
+```js
+plugins: {
+  search: {
+    provider: 'algolia',
+    apiKey: 'your-api-key',
+    indexName: 'your-index',
+  },
+  analytics: {
+    provider: 'google',
+    id: 'G-XXXXXXXXXX',
+  },
+}
+```
+
+## Environment Variables
+
+Some features may require environment variables:
+
+```bash
+# .env.local
+NEXT_PUBLIC_ALGOLIA_API_KEY=your-api-key
+NEXT_PUBLIC_GA_ID=your-ga-id
+```
+
+## TypeScript Support
+
+The configuration object is fully typed. Import the types:
+
+```ts
+import type { DocsConfig } from './types'
+
+export const docsConfig: DocsConfig = {
+  // Your configuration
+}
+```
+
+## Best Practices
+
+1. **Version Control**: Keep your configuration in version control
+2. **Environment Variables**: Use environment variables for sensitive data
+3. **Type Safety**: Use TypeScript for better type safety
+4. **Testing**: Test your configuration changes before deploying
+5. **Documentation**: Document any custom configuration options
+
+## Common Configurations
+
+### Blog Configuration
+
+```js
+{
+  site: {
+    title: 'My Tech Blog',
+  },
+  content: {
+    mdx: {
+      components: {
+        pre: 'BlogCodeBlock',
+      },
+    },
+  },
+}
+```
+
+### API Documentation
+
+```js
+{
+  site: {
+    title: 'API Reference',
+  },
+  content: {
+    tableOfContents: {
+      depth: 4,
+    },
+  },
+}
+```
+
+## Next Steps
+
+- Learn about [MDX Components](/features/mdx)
+- Explore [Theming Options](/guides/theming)
+- Set up [Plugins](/guides/plugins) 

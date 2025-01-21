@@ -1,0 +1,241 @@
+# Components
+
+Our documentation framework includes a set of pre-built components that you can use in your MDX files. These components are built with accessibility in mind and follow modern design principles.
+
+## Alert
+
+Use the Alert component to display important messages:
+
+```jsx filename="example.mdx"
+<Alert>
+  This is a default alert
+</Alert>
+
+<Alert variant="destructive">
+  This is a destructive alert
+</Alert>
+```
+
+### Result:
+
+<Alert>
+  This is a default alert
+</Alert>
+
+<Alert variant="destructive">
+  This is a destructive alert
+</Alert>
+
+## Button
+
+Use the Button component for interactive elements:
+
+```jsx filename="example.mdx"
+<Button>Default Button</Button>
+
+<Button variant="outline">
+  Outline Button
+</Button>
+
+<Button variant="ghost">
+  Ghost Button
+</Button>
+```
+
+### Result:
+
+<Button>Default Button</Button>
+
+<Button variant="outline">
+  Outline Button
+</Button>
+
+<Button variant="ghost">
+  Ghost Button
+</Button>
+
+## Card
+
+Use the Card component to group related content:
+
+```jsx filename="example.mdx"
+<Card>
+  <CardHeader>
+    <CardTitle>Card Title</CardTitle>
+    <CardDescription>Card description goes here.</CardDescription>
+  </CardHeader>
+  <CardContent>
+    This is the main content of the card.
+  </CardContent>
+  <CardFooter>
+    <Button>Action</Button>
+  </CardFooter>
+</Card>
+```
+
+### Result:
+
+<Card>
+  <CardHeader>
+    <CardTitle>Card Title</CardTitle>
+    <CardDescription>Card description goes here.</CardDescription>
+  </CardHeader>
+  <CardContent>
+    This is the main content of the card.
+  </CardContent>
+  <CardFooter>
+    <Button>Action</Button>
+  </CardFooter>
+</Card>
+
+## Tabs
+
+Use the Tabs component to organize content into different sections:
+
+```jsx filename="example.mdx"
+<Tabs defaultValue="npm">
+  <TabsList>
+    <TabsTrigger value="npm">npm</TabsTrigger>
+    <TabsTrigger value="yarn">yarn</TabsTrigger>
+    <TabsTrigger value="pnpm">pnpm</TabsTrigger>
+  </TabsList>
+  <TabsContent value="npm">
+    ```bash
+    npm install
+    ```
+  </TabsContent>
+  <TabsContent value="yarn">
+    ```bash
+    yarn install
+    ```
+  </TabsContent>
+  <TabsContent value="pnpm">
+    ```bash
+    pnpm install
+    ```
+  </TabsContent>
+</Tabs>
+```
+
+### Result:
+
+<Tabs defaultValue="npm">
+  <TabsList>
+    <TabsTrigger value="npm">npm</TabsTrigger>
+    <TabsTrigger value="yarn">yarn</TabsTrigger>
+    <TabsTrigger value="pnpm">pnpm</TabsTrigger>
+  </TabsList>
+  <TabsContent value="npm">
+    ```bash
+    npm install
+    ```
+  </TabsContent>
+  <TabsContent value="yarn">
+    ```bash
+    yarn install
+    ```
+  </TabsContent>
+  <TabsContent value="pnpm">
+    ```bash
+    pnpm install
+    ```
+  </TabsContent>
+</Tabs>
+
+## Component Props
+
+### Alert Props
+
+| Prop      | Type                 | Default   | Description                                |
+| --------- | -------------------- | --------- | ------------------------------------------ |
+| variant   | `'default' \| 'destructive'` | `'default'` | The visual style of the alert |
+| className | `string`             | `''`      | Additional CSS classes to apply            |
+| children  | `ReactNode`          | -         | The content to display inside the alert    |
+
+### Button Props
+
+| Prop      | Type                 | Default   | Description                                |
+| --------- | -------------------- | --------- | ------------------------------------------ |
+| variant   | `'default' \| 'outline' \| 'ghost'` | `'default'` | The visual style of the button |
+| size      | `'default' \| 'sm' \| 'lg'` | `'default'` | The size of the button |
+| className | `string`             | `''`      | Additional CSS classes to apply            |
+| children  | `ReactNode`          | -         | The content to display inside the button   |
+
+### Card Props
+
+| Prop      | Type                 | Default   | Description                                |
+| --------- | -------------------- | --------- | ------------------------------------------ |
+| className | `string`             | `''`      | Additional CSS classes to apply            |
+| children  | `ReactNode`          | -         | The content to display inside the card     |
+
+### Tabs Props
+
+| Prop         | Type                 | Default   | Description                                |
+| ------------ | -------------------- | --------- | ------------------------------------------ |
+| defaultValue | `string`             | -         | The default selected tab value             |
+| value        | `string`             | -         | The controlled tab value                   |
+| onValueChange| `(value: string) => void` | -   | Callback when the selected tab changes     |
+| className    | `string`             | `''`      | Additional CSS classes to apply            |
+| children     | `ReactNode`          | -         | The content to display inside the tabs     |
+
+## Customizing Components
+
+You can customize the appearance of components using Tailwind CSS classes:
+
+```jsx filename="example.mdx"
+<Alert className="bg-blue-100 border-blue-500">
+  Custom styled alert
+</Alert>
+
+<Button className="bg-gradient-to-r from-pink-500 to-purple-500">
+  Gradient Button
+</Button>
+
+<Card className="border-2 border-purple-500">
+  <CardHeader>
+    <CardTitle className="text-purple-500">Custom Card</CardTitle>
+  </CardHeader>
+</Card>
+```
+
+## Creating Custom Components
+
+You can create your own custom components in the `components` directory:
+
+```jsx filename="components/CustomAlert.jsx"
+import { cn } from "@/lib/utils"
+
+export function CustomAlert({ className, children, ...props }) {
+  return (
+    <div
+      className={cn(
+        "rounded-lg border p-4 bg-background",
+        className
+      )}
+      {...props}
+    >
+      {children}
+    </div>
+  )
+}
+```
+
+Then use it in your MDX files:
+
+```jsx filename="example.mdx"
+import { CustomAlert } from "@/components/CustomAlert"
+
+<CustomAlert>
+  This is a custom alert component
+</CustomAlert>
+```
+
+## Best Practices
+
+1. Use semantic HTML elements inside components
+2. Follow accessibility guidelines
+3. Keep components focused and reusable
+4. Document component props and usage
+5. Test components across different viewports
+6. Use consistent naming conventions
+7. Maintain a component hierarchy 

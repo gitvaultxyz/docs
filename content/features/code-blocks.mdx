@@ -1,0 +1,286 @@
+---
+title: Code Blocks
+description: Learn how to use and customize code blocks in your documentation.
+tags: ["features", "code", "syntax-highlighting"]
+---
+
+# Code Blocks
+
+The framework provides rich code block functionality with syntax highlighting, line numbers, line highlighting, and more.
+
+## Basic Usage
+
+Create a code block using triple backticks and specify the language:
+
+```jsx
+function Button({ children }) {
+  return (
+    <button className="px-4 py-2 rounded bg-primary text-white">
+      {children}
+    </button>
+  )
+}
+```
+
+## Features
+
+### Syntax Highlighting
+
+Supports all major programming languages:
+
+```python
+def hello_world():
+    print("Hello, World!")
+```
+
+```css
+.button {
+    background: #0070f3;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+}
+```
+
+```bash
+npm install next-themes
+yarn add next-themes
+pnpm add next-themes
+```
+
+### Line Numbers
+
+Add the `showLineNumbers` prop to display line numbers:
+
+```jsx showLineNumbers
+function Counter() {
+  const [count, setCount] = useState(0)
+  
+  return (
+    <button onClick={() => setCount(count + 1)}>
+      Count: {count}
+    </button>
+  )
+}
+```
+
+### Line Highlighting
+
+Highlight specific lines using curly braces:
+
+```jsx {2,4-6}
+function Counter() {
+  const [count, setCount] = useState(0)
+  
+  return (
+    <button onClick={() => setCount(count + 1)}>
+      Count: {count}
+    </button>
+  )
+}
+```
+
+### File Names
+
+Add a filename to your code block:
+
+```jsx filename="components/Button.jsx"
+function Button({ children }) {
+  return (
+    <button className="px-4 py-2 rounded bg-primary text-white">
+      {children}
+    </button>
+  )
+}
+```
+
+### Copy Button
+
+A copy button is automatically added to code blocks:
+
+```js
+const greeting = "Hello, World!"
+console.log(greeting)
+```
+
+### Word Highlighting
+
+Highlight specific words using `//highlight-word`:
+
+```jsx
+function Button({ children }) {
+  return (
+    <button className="px-4 py-2 rounded bg-primary text-white"> //highlight-word{button}
+      {children}
+    </button>
+  )
+}
+```
+
+### Multiple Highlights
+
+Combine line and word highlighting:
+
+```jsx {1,3} filename="Example.jsx"
+function Example() { //highlight-word{Example}
+  const value = 42
+  return <div>{value}</div> //highlight-word{div}
+}
+```
+
+### Diff Highlighting
+
+Show code differences using `+` and `-`:
+
+```diff
+function Button({ children }) {
+-  return <button>{children}</button>
++  return (
++    <button className="px-4 py-2 rounded bg-primary text-white">
++      {children}
++    </button>
++  )
+}
+```
+
+## Configuration
+
+### Theme Configuration
+
+Configure syntax highlighting theme in `docsConfig.js`:
+
+```js
+export const docsConfig = {
+  codeBlocks: {
+    theme: {
+      light: 'github-light',
+      dark: 'github-dark',
+    },
+    showLineNumbers: true,
+    showCopyButton: true,
+    fontSize: 'text-sm',
+    borderRadius: 'rounded-lg',
+  },
+}
+```
+
+### Custom Themes
+
+Create custom syntax highlighting themes:
+
+```js
+export const docsConfig = {
+  codeBlocks: {
+    theme: {
+      light: {
+        background: '#ffffff',
+        text: '#000000',
+        comment: '#6a737d',
+        keyword: '#d73a49',
+        string: '#032f62',
+        number: '#005cc5',
+        function: '#6f42c1',
+        operator: '#d73a49',
+      },
+      dark: {
+        // Dark theme colors
+      },
+    },
+  },
+}
+```
+
+### Language Configuration
+
+Configure supported languages:
+
+```js
+export const docsConfig = {
+  codeBlocks: {
+    languages: {
+      jsx: {
+        name: 'JSX',
+        extensions: ['.jsx', '.tsx'],
+      },
+      typescript: {
+        name: 'TypeScript',
+        extensions: ['.ts', '.tsx'],
+      },
+      // Add more languages
+    },
+  },
+}
+```
+
+## Best Practices
+
+1. **Language Specification**: Always specify the correct language for syntax highlighting
+2. **Line Numbers**: Use line numbers for longer code blocks
+3. **Highlighting**: Use line highlighting to emphasize important parts
+4. **File Names**: Add filenames for context when showing file contents
+5. **Comments**: Include helpful comments in code examples
+6. **Formatting**: Maintain consistent code formatting
+
+## Examples
+
+### React Component
+
+```jsx filename="components/Example.jsx" {5-7}
+import { useState } from 'react'
+
+function Example() {
+  const [count, setCount] = useState(0)
+  const increment = () => {
+    setCount(count + 1)
+  }
+  
+  return (
+    <div className="p-4">
+      <p>Count: {count}</p>
+      <button onClick={increment}>
+        Increment
+      </button>
+    </div>
+  )
+}
+```
+
+### API Route
+
+```typescript filename="pages/api/hello.ts" showLineNumbers
+import type { NextApiRequest, NextApiResponse } from 'next'
+
+type Data = {
+  message: string
+}
+
+export default function handler(
+  req: NextApiRequest,
+  res: NextApiResponse<Data>
+) {
+  res.status(200).json({ message: 'Hello World' })
+}
+```
+
+### CSS Styles
+
+```css filename="styles/button.css" {4-6}
+.button {
+    display: inline-flex;
+    align-items: center;
+    background: linear-gradient(
+        to right, #0070f3, #00a6ed
+    );
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    font-weight: 500;
+    transition: all 0.2s;
+}
+```
+
+## Next Steps
+
+- Learn about [MDX Support](/features/mdx)
+- Explore [Components](/components)
+- Check out [Configuration](/configuration) options 

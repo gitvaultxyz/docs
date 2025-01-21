@@ -1,0 +1,259 @@
+# Navigation
+
+The documentation framework provides multiple navigation components to help users find their way around your documentation.
+
+## Navigation Components
+
+### 1. Top Navigation
+
+The top navigation bar is configured in `docsConfig.js`:
+
+```js filename="docsConfig.js"
+export const docsConfig = {
+  navigation: {
+    links: [
+      {
+        title: 'Documentation',
+        href: '/',
+      },
+      {
+        title: 'GitHub',
+        href: 'https://github.com/yourusername/docs',
+        external: true,
+      },
+      {
+        title: 'Twitter',
+        href: 'https://twitter.com/yourusername',
+        external: true,
+      },
+    ],
+  },
+}
+```
+
+### 2. Sidebar Navigation
+
+The sidebar is organized into groups and items. You can optionally add icons to any sidebar item:
+
+```js filename="docsConfig.js"
+sidebar: {
+  groups: [
+    {
+      title: 'Getting Started',
+      items: [
+        {
+          title: 'Introduction',
+          href: '/introduction',
+          icon: 'book' // Optional icon
+        },
+        {
+          title: 'Installation',
+          href: '/installation',
+          icon: 'rocket' // Optional icon
+        },
+      ],
+    },
+    {
+      title: 'Features',
+      items: [
+        {
+          title: 'MDX Support',
+          href: '/features/mdx',
+          icon: 'code' // Optional icon
+        },
+        {
+          title: 'Components',
+          href: '/features/components',
+          icon: 'component' // Optional icon
+        },
+      ],
+    },
+  ],
+}
+```
+
+The `icon` property is optional and can reference any icon defined in your `components/icons.jsx` file. Icons will be displayed before the item title in the sidebar.
+
+### 3. On This Page
+
+The table of contents navigation is automatically generated from your page headings (h2 and h3). Enable or disable it in `docsConfig.js`:
+
+```js filename="docsConfig.js"
+site: {
+  // ... other options
+  onThisPage: true, // Set to false to disable
+}
+```
+
+### 4. Breadcrumbs
+
+Breadcrumbs are automatically generated based on your page hierarchy:
+
+```jsx
+<Breadcrumbs segments={[
+  { title: 'Documentation', href: '/' },
+  { title: 'Features', href: '/features' },
+  { title: 'Navigation', href: '/features/navigation' },
+]} />
+```
+
+## Mobile Navigation
+
+The framework includes a responsive mobile menu that:
+
+1. Shows a hamburger menu on small screens
+2. Provides a slide-out sidebar
+3. Maintains the same navigation structure as desktop
+
+## Customizing Navigation
+
+### Styling the Top Navigation
+
+The header can be customized in `components/docs/header.js`:
+
+```jsx
+<header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+  <div className="flex h-14 items-center justify-between px-4 md:px-6">
+    {/* Navigation content */}
+  </div>
+</header>
+```
+
+### Styling the Sidebar
+
+Customize the sidebar in `components/docs/sidebar.js`:
+
+```jsx
+<div className="grid grid-flow-row auto-rows-max text-sm">
+  {items.map((item) => (
+    <Link
+      key={item.href}
+      href={item.href}
+      className={cn(
+        "flex w-full items-center rounded-md py-1.5 pl-2",
+        "transition-colors",
+        pathname === item.href
+          ? "bg-accent text-accent-foreground font-medium"
+          : "text-muted-foreground hover:bg-accent/50 hover:text-accent-foreground"
+      )}
+    >
+      {item.title}
+    </Link>
+  ))}
+</div>
+```
+
+### Styling Breadcrumbs
+
+Customize breadcrumbs in your layout:
+
+```jsx
+<Breadcrumbs
+  segments={breadcrumbs}
+  className="mb-4 text-sm text-muted-foreground"
+/>
+```
+
+## Navigation Features
+
+### Active Link Highlighting
+
+Links are automatically highlighted based on the current route:
+
+```jsx
+const pathname = usePathname()
+const isActive = pathname === item.href
+
+<Link
+  className={cn(
+    isActive
+      ? "bg-accent text-accent-foreground"
+      : "text-muted-foreground hover:bg-accent/50"
+  )}
+>
+  {item.title}
+</Link>
+```
+
+### External Links
+
+External links can be configured with special handling:
+
+```js
+{
+  title: 'GitHub',
+  href: 'https://github.com/yourusername/docs',
+  external: true, // Opens in new tab
+}
+```
+
+### Nested Navigation
+
+Create nested navigation structures:
+
+```js
+{
+  title: 'Advanced',
+  items: [
+    {
+      title: 'Level 1',
+      items: [
+        {
+          title: 'Level 2',
+          href: '/advanced/level-2',
+        },
+      ],
+    },
+  ],
+}
+```
+
+## Best Practices
+
+1. **Clear Structure**: Organize your navigation logically
+2. **Descriptive Labels**: Use clear, concise navigation labels
+3. **Consistent Styling**: Maintain consistent styling across navigation elements
+4. **Mobile First**: Ensure navigation works well on all devices
+5. **Active States**: Provide clear visual feedback for current location
+
+## Examples
+
+### Custom Navigation Item
+
+```jsx
+<Link
+  href={href}
+  className={cn(
+    "group flex items-center rounded-md px-3 py-2 text-sm font-medium",
+    "hover:bg-accent hover:text-accent-foreground",
+    active && "bg-accent text-accent-foreground"
+  )}
+>
+  {icon && <icon className="mr-2 h-4 w-4" />}
+  <span>{title}</span>
+  {external && (
+    <ExternalLink className="ml-2 h-4 w-4 opacity-0 group-hover:opacity-100" />
+  )}
+</Link>
+```
+
+### Custom Mobile Menu
+
+```jsx
+<Sheet>
+  <SheetTrigger asChild>
+    <Button variant="ghost" className="md:hidden">
+      <Menu className="h-6 w-6" />
+    </Button>
+  </SheetTrigger>
+  <SheetContent side="left">
+    <DocsSidebar items={items} />
+  </SheetContent>
+</Sheet>
+```
+
+## Next Steps
+
+- Learn about [MDX Support](/features/mdx)
+- Explore [Components](/features/components)
+- Read about [Theming](/features/theming) 

@@ -1,0 +1,241 @@
+---
+title: Callouts
+description: Learn how to use callouts to highlight important information in your documentation.
+tags: ["features", "callouts", "alerts"]
+---
+
+# Callouts
+
+Callouts help you highlight important information, warnings, or notes in your documentation.
+
+## Basic Usage
+
+Use the `Alert` component to create callouts:
+
+```jsx
+<Alert>
+  This is a default callout with important information.
+</Alert>
+```
+
+## Variants
+
+### Default
+
+Use for general information and notes:
+
+<Alert>
+  This is a default callout providing additional context.
+</Alert>
+
+```jsx
+<Alert>
+  This is a default callout providing additional context.
+</Alert>
+```
+
+### Warning
+
+Use for warnings and important considerations:
+
+<Alert variant="warning">
+  Be careful when modifying these settings.
+</Alert>
+
+```jsx
+<Alert variant="warning">
+  Be careful when modifying these settings.
+</Alert>
+```
+
+### Destructive
+
+Use for critical warnings or error messages:
+
+<Alert variant="destructive">
+  This action cannot be undone.
+</Alert>
+
+```jsx
+<Alert variant="destructive">
+  This action cannot be undone.
+</Alert>
+```
+
+## With Title
+
+Add a title to your callout:
+
+<Alert>
+  <AlertTitle>Note</AlertTitle>
+  <AlertDescription>
+    This is a callout with a title and description.
+  </AlertDescription>
+</Alert>
+
+```jsx
+<Alert>
+  <AlertTitle>Note</AlertTitle>
+  <AlertDescription>
+    This is a callout with a title and description.
+  </AlertDescription>
+</Alert>
+```
+
+## With Icon
+
+Add an icon to your callout:
+
+<Alert>
+  <Icons.info className="h-4 w-4" />
+  <AlertTitle>Info</AlertTitle>
+  <AlertDescription>
+    This callout includes an icon.
+  </AlertDescription>
+</Alert>
+
+```jsx
+<Alert>
+  <Icons.info className="h-4 w-4" />
+  <AlertTitle>Info</AlertTitle>
+  <AlertDescription>
+    This callout includes an icon.
+  </AlertDescription>
+</Alert>
+```
+
+## Configuration
+
+Configure callout styles in `docsConfig.js`:
+
+```js
+export const docsConfig = {
+  callouts: {
+    styles: {
+      default: {
+        background: 'bg-background',
+        border: 'border-border',
+        icon: 'info',
+      },
+      warning: {
+        background: 'bg-warning/20',
+        border: 'border-warning',
+        icon: 'alert-triangle',
+      },
+      destructive: {
+        background: 'bg-destructive/20',
+        border: 'border-destructive',
+        icon: 'alert-octagon',
+      },
+    },
+  },
+}
+```
+
+## Custom Styling
+
+### Using Tailwind Classes
+
+Add custom styles using Tailwind classes:
+
+```jsx
+<Alert className="bg-purple-50 border-purple-200 dark:bg-purple-950 dark:border-purple-800">
+  <AlertTitle className="text-purple-800 dark:text-purple-200">
+    Custom Style
+  </AlertTitle>
+  <AlertDescription className="text-purple-600 dark:text-purple-300">
+    This callout uses custom colors.
+  </AlertDescription>
+</Alert>
+```
+
+### Custom Icons
+
+Use custom icons in your callouts:
+
+```jsx
+<Alert>
+  <CustomIcon className="h-4 w-4" />
+  <AlertTitle>Custom Icon</AlertTitle>
+  <AlertDescription>
+    This callout uses a custom icon.
+  </AlertDescription>
+</Alert>
+```
+
+## Examples
+
+### Documentation Note
+
+<Alert>
+  <Icons.info className="h-4 w-4" />
+  <AlertTitle>Note</AlertTitle>
+  <AlertDescription>
+    This feature requires Node.js version 18.0 or higher.
+  </AlertDescription>
+</Alert>
+
+```jsx
+<Alert>
+  <Icons.info className="h-4 w-4" />
+  <AlertTitle>Note</AlertTitle>
+  <AlertDescription>
+    This feature requires Node.js version 18.0 or higher.
+  </AlertDescription>
+</Alert>
+```
+
+### Version Warning
+
+<Alert variant="warning">
+  <Icons.alertTriangle className="h-4 w-4" />
+  <AlertTitle>Version Notice</AlertTitle>
+  <AlertDescription>
+    This API will be deprecated in version 2.0.0.
+  </AlertDescription>
+</Alert>
+
+```jsx
+<Alert variant="warning">
+  <Icons.alertTriangle className="h-4 w-4" />
+  <AlertTitle>Version Notice</AlertTitle>
+  <AlertDescription>
+    This API will be deprecated in version 2.0.0.
+  </AlertDescription>
+</Alert>
+```
+
+### Security Alert
+
+<Alert variant="destructive">
+  <Icons.alertOctagon className="h-4 w-4" />
+  <AlertTitle>Security Warning</AlertTitle>
+  <AlertDescription>
+    Never share your API keys or sensitive credentials.
+  </AlertDescription>
+</Alert>
+
+```jsx
+<Alert variant="destructive">
+  <Icons.alertOctagon className="h-4 w-4" />
+  <AlertTitle>Security Warning</AlertTitle>
+  <AlertDescription>
+    Never share your API keys or sensitive credentials.
+  </AlertDescription>
+</Alert>
+```
+
+## Best Practices
+
+1. **Use Appropriately**: Choose the right variant for your message
+2. **Clear Titles**: Use descriptive titles that convey the main point
+3. **Concise Content**: Keep descriptions clear and to the point
+4. **Consistent Style**: Maintain consistent usage across documentation
+5. **Accessibility**: Ensure proper contrast and readability
+6. **Icons**: Use meaningful icons that reinforce the message
+
+## Next Steps
+
+- Learn about [MDX Support](/features/mdx)
+- Explore [Components](/components)
+- Check out [Configuration](/configuration) options 

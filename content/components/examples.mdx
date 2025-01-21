@@ -1,0 +1,121 @@
+---
+title: Component Examples
+description: Examples of using Shadcn components in MDX documentation.
+---
+
+# Component Examples
+
+This page demonstrates how to use Shadcn components directly in your MDX documentation.
+
+## Buttons
+
+You can use the Button component directly in your MDX:
+
+<Button>Default Button</Button>
+<Button variant="secondary" className="ml-2">Secondary Button</Button>
+<Button variant="destructive" className="ml-2">Destructive Button</Button>
+
+## Alerts
+
+Alerts are useful for highlighting important information:
+
+<Alert>
+  <AlertTitle>Heads up!</AlertTitle>
+  <AlertDescription>
+    You can add alerts to your documentation to highlight important information.
+  </AlertDescription>
+</Alert>
+
+<Alert variant="destructive" className="mt-4">
+  <AlertTitle>Error</AlertTitle>
+  <AlertDescription>
+    Something went wrong! Please try again later.
+  </AlertDescription>
+</Alert>
+
+## Tabs
+
+Tabs are great for organizing related content:
+
+<Tabs defaultValue="npm" className="mt-6">
+  <TabsList>
+    <TabsTrigger value="npm">npm</TabsTrigger>
+    <TabsTrigger value="yarn">yarn</TabsTrigger>
+    <TabsTrigger value="pnpm">pnpm</TabsTrigger>
+  </TabsList>
+  <TabsContent value="npm">
+    ```bash
+    npm install @radix-ui/react-tabs
+    ```
+  </TabsContent>
+  <TabsContent value="yarn">
+    ```bash
+    yarn add @radix-ui/react-tabs
+    ```
+  </TabsContent>
+  <TabsContent value="pnpm">
+    ```bash
+    pnpm add @radix-ui/react-tabs
+    ```
+  </TabsContent>
+</Tabs>
+
+## Using Components in Documentation
+
+You can mix and match regular markdown with Shadcn components:
+
+1. First, import the component in your `mdx-components.js`
+2. Add it to the components object
+3. Use it directly in your MDX files
+
+For example, here's a button with some text:
+
+<div className="flex items-center gap-4 mt-4">
+  <Button>Click me</Button>
+  <span>← This is a Shadcn button!</span>
+</div>
+
+## Code Blocks
+
+Code blocks are styled with syntax highlighting:
+
+```jsx
+import { Button } from "@/components/ui/button"
+
+export default function Example() {
+  return (
+    <div className="space-x-2">
+      <Button variant="default">Default</Button>
+      <Button variant="secondary">Secondary</Button>
+      <Button variant="destructive">Destructive</Button>
+    </div>
+  )
+}
+```
+
+## Interactive Examples
+
+You can create interactive examples by combining components:
+
+<div className="space-y-4 mt-6">
+  <Alert>
+    <AlertTitle>Profile Updated</AlertTitle>
+    <AlertDescription>
+      Your profile has been successfully updated.
+    </AlertDescription>
+  </Alert>
+  <div className="flex gap-2">
+    <Button variant="outline">Dismiss</Button>
+    <Button>View Profile</Button>
+  </div>
+</div>
+
+## Best Practices
+
+When using components in MDX:
+
+1. Keep the examples simple and focused
+2. Use proper spacing and layout
+3. Provide context and explanations
+4. Show both basic and advanced usage
+5. Include proper accessibility attributes 

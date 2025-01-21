@@ -1,0 +1,135 @@
+---
+title: Introduction
+description: A modern documentation framework built with Next.js and Shadcn UI.
+---
+
+# Introduction
+
+Welcome to our modern documentation framework built with Next.js and MDX. This framework provides a beautiful, responsive, and feature-rich environment for creating and maintaining documentation.
+
+## Key Features
+
+- **MDX Support**: Write documentation using Markdown with JSX components
+- **Beautiful UI**: Clean and modern interface with light/dark mode support
+- **Full-text Search**: Built-in search functionality for your documentation
+- **Responsive Design**: Works seamlessly on desktop, tablet, and mobile devices
+- **Code Highlighting**: Syntax highlighting for code blocks with copy functionality
+- **Navigation**: Customizable sidebar, breadcrumbs, and "On This Page" navigation
+- **Media Support**: Embed images and YouTube videos in your documentation
+- **Customizable**: Fully configurable through a central configuration file
+
+## Getting Started
+
+1. **Installation**: Start by [installing](/installation) the framework
+2. **Configuration**: Learn how to [configure](/configuration) your documentation
+3. **Writing Content**: Begin [writing content](/guides/writing-content) using MDX
+4. **Customization**: [Customize](/guides/customization) the look and feel
+
+## Framework Structure
+
+```txt
+docs/
+├── content/        # Your documentation content (MDX files)
+├── components/     # React components
+├── config/        # Configuration files
+├── lib/           # Utility functions
+└── public/        # Static assets
+```
+
+## Next Steps
+
+- Read the [Installation Guide](/installation) to set up your documentation
+- Learn about [MDX Support](/features/mdx) and available components
+- Explore [Configuration Options](/configuration) to customize your site
+- Check out our [Guides](/guides/getting-started) for detailed tutorials
+
+## Project Structure
+
+```
+my-docs/
+├── content/           # Documentation content (MDX files)
+├── components/        # React components
+├── styles/           # Global styles and Tailwind CSS
+├── public/           # Static assets
+└── docsConfig.js     # Site configuration
+```
+
+## Key Concepts
+
+### Configuration
+
+The framework is highly configurable through the `docsConfig.js` file. You can customize:
+
+- Site metadata and branding
+- Navigation structure
+- Theme settings
+- Footer content
+- And more
+
+### Content Organization
+
+Documentation is written in MDX and stored in the `content/docs` directory:
+
+```txt filename="Directory Structure"
+content/
+  docs/
+    introduction.mdx
+    installation.mdx
+    features/
+      mdx.mdx
+      components.mdx
+    guides/
+      adding-pages.mdx
+```
+
+### Built-in Components
+
+The framework includes several built-in components for common documentation needs:
+
+<Alert>
+  <AlertTitle>Note</AlertTitle>
+  <AlertDescription>
+    Components can be used directly in your MDX files without additional imports.
+  </AlertDescription>
+</Alert>
+
+<Tabs defaultValue="button">
+  <TabsList>
+    <TabsTrigger value="button">Button</TabsTrigger>
+    <TabsTrigger value="alert">Alert</TabsTrigger>
+    <TabsTrigger value="tabs">Tabs</TabsTrigger>
+  </TabsList>
+  <TabsContent value="button">
+    ```jsx filename="Button.jsx"
+    <Button>Click me</Button>
+    ```
+    <div className="mt-4">
+      <Button>Click me</Button>
+    </div>
+  </TabsContent>
+  <TabsContent value="alert">
+    ```jsx filename="Alert.jsx"
+    <Alert>
+      <AlertTitle>Title</AlertTitle>
+      <AlertDescription>Description</AlertDescription>
+    </Alert>
+    ```
+  </TabsContent>
+  <TabsContent value="tabs">
+    ```jsx filename="Tabs.jsx"
+    <Tabs>
+      <TabsList>
+        <TabsTrigger>Tab 1</TabsTrigger>
+      </TabsList>
+      <TabsContent>Content 1</TabsContent>
+    </Tabs>
+    ```
+  </TabsContent>
+</Tabs>
+
+## Next Steps
+
+- Read the [Installation Guide](/docs/installation) for detailed setup instructions
+- Learn about [MDX Support](/docs/features/mdx) and available components
+- Explore [Configuration Options](/docs/configuration) to customize your site
+- Check out our [Guides](/docs/guides/getting-started) for detailed tutorials 

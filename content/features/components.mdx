@@ -1,0 +1,180 @@
+# Components
+
+The documentation framework comes with a set of beautiful, accessible components built with Shadcn UI. These components are designed to help you create rich documentation pages with consistent styling.
+
+## Available Components
+
+### Alert
+
+Use alerts to highlight important information:
+
+<Alert>
+  This is a default alert
+</Alert>
+
+<Alert variant="destructive">
+  This is a destructive alert
+</Alert>
+
+```jsx
+<Alert>
+  This is a default alert
+</Alert>
+
+<Alert variant="destructive">
+  This is a destructive alert
+</Alert>
+```
+
+### Button
+
+Buttons for actions and links:
+
+<Button>Default Button</Button>
+<Button variant="secondary" className="ml-2">Secondary Button</Button>
+<Button variant="outline" className="ml-2">Outline Button</Button>
+
+```jsx
+<Button>Default Button</Button>
+<Button variant="secondary">Secondary Button</Button>
+<Button variant="outline">Outline Button</Button>
+```
+
+### Card
+
+Cards for grouping related content:
+
+<Card>
+  <CardHeader>
+    <CardTitle>Card Title</CardTitle>
+    <CardDescription>Card description goes here</CardDescription>
+  </CardHeader>
+  <CardContent>
+    This is the main content of the card.
+  </CardContent>
+  <CardFooter>
+    <Button>Action</Button>
+  </CardFooter>
+</Card>
+
+```jsx
+<Card>
+  <CardHeader>
+    <CardTitle>Card Title</CardTitle>
+    <CardDescription>Card description goes here</CardDescription>
+  </CardHeader>
+  <CardContent>
+    This is the main content of the card.
+  </CardContent>
+  <CardFooter>
+    <Button>Action</Button>
+  </CardFooter>
+</Card>
+```
+
+### Tabs
+
+Organize content into tabs:
+
+<Tabs defaultValue="preview">
+  <TabsList>
+    <TabsTrigger value="preview">Preview</TabsTrigger>
+    <TabsTrigger value="code">Code</TabsTrigger>
+  </TabsList>
+  <TabsContent value="preview">
+    This is the preview content
+  </TabsContent>
+  <TabsContent value="code">
+    This is the code content
+  </TabsContent>
+</Tabs>
+
+```jsx
+<Tabs defaultValue="preview">
+  <TabsList>
+    <TabsTrigger value="preview">Preview</TabsTrigger>
+    <TabsTrigger value="code">Code</TabsTrigger>
+  </TabsList>
+  <TabsContent value="preview">
+    This is the preview content
+  </TabsContent>
+  <TabsContent value="code">
+    This is the code content
+  </TabsContent>
+</Tabs>
+```
+
+## Component Features
+
+All components are:
+
+- **Accessible**: Built with ARIA attributes and keyboard navigation
+- **Customizable**: Can be styled with Tailwind CSS classes
+- **Responsive**: Work well on all screen sizes
+- **Dark Mode**: Support light and dark themes
+- **TypeScript**: Full TypeScript support with proper types
+
+## Using Components
+
+1. Components can be used directly in MDX files:
+
+```mdx
+import { Button } from '@/components/ui/button'
+
+# My Page
+
+<Button>Click me</Button>
+```
+
+2. Components are also available globally in MDX files without importing:
+
+```mdx
+# My Page
+
+<Button>Click me</Button>
+```
+
+## Customizing Components
+
+### With Tailwind Classes
+
+Add Tailwind classes using the `className` prop:
+
+```jsx
+<Button className="bg-blue-500 hover:bg-blue-600">
+  Custom Button
+</Button>
+```
+
+### With Variants
+
+Many components support variants:
+
+```jsx
+<Button variant="outline">Outline Button</Button>
+<Button variant="ghost">Ghost Button</Button>
+<Button variant="link">Link Button</Button>
+```
+
+## Component Documentation
+
+For detailed documentation of each component, visit:
+
+- [Alert](/components/alert)
+- [Button](/components/button)
+- [Card](/components/card)
+- [Tabs](/components/tabs)
+
+## Best Practices
+
+1. **Consistency**: Use components consistently throughout your documentation
+2. **Accessibility**: Keep accessibility in mind when customizing components
+3. **Responsive Design**: Test components on different screen sizes
+4. **Performance**: Don't overuse heavy components
+5. **Documentation**: Document any custom components you create
+
+## Next Steps
+
+- Learn about [MDX Support](/features/mdx)
+- Explore [Custom Components](/guides/custom-components)
+- Read the [Styling Guide](/guides/styling) 

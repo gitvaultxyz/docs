@@ -1,0 +1,209 @@
+---
+title: Card
+description: Container component for displaying content in a card format.
+---
+
+# Card
+
+Cards are surface-level components used to group related content and actions.
+
+## Usage
+
+```jsx
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
+
+export default function Example() {
+  return (
+    <Card>
+      <CardHeader>
+        <CardTitle>Card Title</CardTitle>
+        <CardDescription>Card Description</CardDescription>
+      </CardHeader>
+      <CardContent>
+        <p>Card Content</p>
+      </CardContent>
+      <CardFooter>
+        <p>Card Footer</p>
+      </CardFooter>
+    </Card>
+  )
+}
+```
+
+## Examples
+
+### Simple Card
+
+```jsx
+<Card>
+  <CardHeader>
+    <CardTitle>Notification Settings</CardTitle>
+    <CardDescription>
+      Choose what notifications you want to receive
+    </CardDescription>
+  </CardHeader>
+  <CardContent>
+    <div className="grid gap-4">
+      <div className="flex items-center space-x-4">
+        <Switch id="emails" />
+        <Label htmlFor="emails">Email notifications</Label>
+      </div>
+      <div className="flex items-center space-x-4">
+        <Switch id="push" />
+        <Label htmlFor="push">Push notifications</Label>
+      </div>
+    </div>
+  </CardContent>
+  <CardFooter>
+    <Button>Save changes</Button>
+  </CardFooter>
+</Card>
+```
+
+### With Form
+
+```jsx
+<Card className="w-[350px]">
+  <CardHeader>
+    <CardTitle>Create project</CardTitle>
+    <CardDescription>
+      Deploy your new project in one-click.
+    </CardDescription>
+  </CardHeader>
+  <CardContent>
+    <form>
+      <div className="grid w-full items-center gap-4">
+        <div className="flex flex-col space-y-1.5">
+          <Label htmlFor="name">Name</Label>
+          <Input id="name" placeholder="Name of your project" />
+        </div>
+        <div className="flex flex-col space-y-1.5">
+          <Label htmlFor="framework">Framework</Label>
+          <Select>
+            <SelectTrigger id="framework">
+              <SelectValue placeholder="Select" />
+            </SelectTrigger>
+            <SelectContent position="popper">
+              <SelectItem value="next">Next.js</SelectItem>
+              <SelectItem value="sveltekit">SvelteKit</SelectItem>
+              <SelectItem value="astro">Astro</SelectItem>
+              <SelectItem value="nuxt">Nuxt.js</SelectItem>
+            </SelectContent>
+          </Select>
+        </div>
+      </div>
+    </form>
+  </CardContent>
+  <CardFooter className="flex justify-between">
+    <Button variant="outline">Cancel</Button>
+    <Button>Deploy</Button>
+  </CardFooter>
+</Card>
+```
+
+## Components
+
+### Card
+
+The main container component.
+
+```jsx
+<Card className="w-[350px]">
+  <p>Card content</p>
+</Card>
+```
+
+### CardHeader
+
+Container for card header content.
+
+```jsx
+<CardHeader>
+  <CardTitle>Title</CardTitle>
+  <CardDescription>Description</CardDescription>
+</CardHeader>
+```
+
+### CardTitle
+
+Used for the card's title.
+
+```jsx
+<CardTitle>Title</CardTitle>
+```
+
+### CardDescription
+
+Used for the card's description.
+
+```jsx
+<CardDescription>Description</CardDescription>
+```
+
+### CardContent
+
+Container for the card's main content.
+
+```jsx
+<CardContent>
+  <p>Content</p>
+</CardContent>
+```
+
+### CardFooter
+
+Container for card footer content.
+
+```jsx
+<CardFooter>
+  <p>Footer</p>
+</CardFooter>
+```
+
+## Design Guidelines
+
+- Use cards to group related content
+- Maintain consistent spacing within cards
+- Use clear hierarchy with titles and descriptions
+- Include actions in the footer when needed
+- Keep content concise and focused
+- Use appropriate padding and margins
+
+## Accessibility
+
+The card component follows these accessibility guidelines:
+
+- Proper heading structure with CardTitle
+- Semantic HTML structure
+- Keyboard navigation support
+- Clear visual hierarchy
+- Sufficient color contrast
+
+## Best Practices
+
+1. **Content Organization**
+   - Group related information
+   - Use clear headings
+   - Keep content concise
+
+2. **Visual Hierarchy**
+   - Use CardTitle for main headings
+   - Use CardDescription for supporting text
+   - Place primary actions in CardFooter
+
+3. **Responsive Design**
+   - Consider mobile viewports
+   - Adjust padding for different screens
+   - Use flexible widths when possible
+
+4. **Interactive Elements**
+   - Place buttons in CardFooter
+   - Use consistent action placement
+   - Provide clear feedback for interactions 

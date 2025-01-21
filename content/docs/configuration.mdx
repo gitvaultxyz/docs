@@ -1,0 +1,442 @@
+# Configuration
+
+Our documentation framework is highly configurable through the `docsConfig.js` file. This guide covers all available configuration options.
+
+## Basic Configuration
+
+The main configuration file is located at `config/docs.js`:
+
+```js filename="config/docs.js"
+export const docsConfig = {
+  title: 'Your Documentation',
+  description: 'Documentation for your project',
+  // ... more options
+}
+```
+
+## Meta Configuration
+
+Configure metadata for SEO and social sharing:
+
+```js filename="config/docs.js"
+meta: {
+  title: {
+    default: 'Your Documentation',
+    template: '%s - Your Documentation'
+  },
+  description: 'Documentation for your project',
+  keywords: ['documentation', 'nextjs', 'react'],
+  authors: [
+    {
+      name: 'Your Name',
+      url: 'https://yourwebsite.com'
+    }
+  ],
+  creator: 'Your Name',
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: 'white' },
+    { media: '(prefers-color-scheme: dark)', color: 'black' }
+  ],
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    url: 'https://yourdocs.com',
+    title: 'Your Documentation',
+    description: 'Documentation for your project',
+    siteName: 'Your Documentation'
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Your Documentation',
+    description: 'Documentation for your project',
+    creator: '@yourusername'
+  },
+  icons: {
+    icon: '/favicon.ico',
+    shortcut: '/favicon-16x16.png',
+    apple: '/apple-touch-icon.png'
+  }
+}
+```
+
+## Header Configuration
+
+Configure the site header and navigation:
+
+```js filename="config/docs.js"
+header: {
+  logo: {
+    text: 'Your Documentation',
+    link: '/',
+    image: '/logo.png'
+  },
+  nav: [
+    {
+      title: 'Documentation',
+      href: '/docs'
+    },
+    {
+      title: 'Blog',
+      href: '/blog'
+    },
+    {
+      title: 'GitHub',
+      href: 'https://github.com/yourusername/yourproject',
+      external: true
+    }
+  ]
+}
+```
+
+## Sidebar Configuration
+
+Configure the documentation sidebar:
+
+```js filename="config/docs.js"
+sidebar: {
+  defaultOpenLevel: 1,
+  collapsible: true,
+  items: [
+    {
+      title: 'Getting Started',
+      items: [
+        {
+          title: 'Introduction',
+          href: '/docs/introduction'
+        },
+        {
+          title: 'Installation',
+          href: '/docs/installation'
+        }
+      ]
+    },
+    {
+      title: 'Components',
+      items: [
+        {
+          title: 'Button',
+          href: '/docs/components/button'
+        },
+        {
+          title: 'Card',
+          href: '/docs/components/card'
+        }
+      ]
+    }
+  ]
+}
+```
+
+## Search Configuration
+
+Configure the search functionality:
+
+```js filename="config/docs.js"
+search: {
+  enabled: true,
+  placeholder: 'Search documentation...',
+  indexing: {
+    includeContent: true,
+    includePath: true,
+    includeTitle: true,
+    includeDescription: true
+  }
+}
+```
+
+## Theme Configuration
+
+Configure the site's theme and appearance:
+
+```js filename="config/docs.js"
+theme: {
+  defaultTheme: 'system',
+  accentColor: {
+    light: 'blue',
+    dark: 'blue'
+  },
+  codeTheme: {
+    light: 'github-light',
+    dark: 'github-dark'
+  },
+  font: {
+    sans: 'Inter',
+    mono: 'JetBrains Mono'
+  }
+}
+```
+
+## Footer Configuration
+
+Configure the site footer:
+
+```js filename="config/docs.js"
+footer: {
+  credits: {
+    text: 'Built by',
+    link: {
+      text: 'Your Name',
+      href: 'https://yourwebsite.com'
+    }
+  },
+  links: [
+    {
+      text: 'GitHub',
+      href: 'https://github.com/yourusername',
+      icon: 'github'
+    },
+    {
+      text: 'Twitter',
+      href: 'https://twitter.com/yourusername',
+      icon: 'twitter'
+    }
+  ]
+}
+```
+
+## Features Configuration
+
+Enable or disable various features:
+
+```js filename="config/docs.js"
+features: {
+  mdxComponents: true,
+  codeBlocks: {
+    enabled: true,
+    copyButton: true,
+    lineNumbers: true,
+    lineHighlighting: true,
+    wordHighlighting: true,
+    showLanguage: true
+  },
+  darkMode: true,
+  search: true,
+  tableOfContents: {
+    enabled: true,
+    depth: 3,
+    scrollspy: true
+  },
+  pagination: true,
+  editLink: {
+    enabled: true,
+    text: 'Edit this page on GitHub',
+    pattern: 'https://github.com/yourusername/yourproject/edit/main/content/:path'
+  },
+  feedback: {
+    enabled: true,
+    labels: {
+      helpful: 'Was this page helpful?',
+      yes: 'Yes',
+      no: 'No'
+    }
+  },
+  lastUpdated: true,
+  readingTime: true,
+  progressBar: true
+}
+```
+
+## Environment Variables
+
+Some features require environment variables:
+
+```bash filename=".env.local"
+# GitHub edit links
+NEXT_PUBLIC_GITHUB_REPO=yourusername/yourproject
+NEXT_PUBLIC_GITHUB_BRANCH=main
+
+# Analytics
+NEXT_PUBLIC_GA_ID=G-XXXXXXXXXX
+
+# Search
+NEXT_PUBLIC_ALGOLIA_APP_ID=XXXXXXXXXX
+NEXT_PUBLIC_ALGOLIA_SEARCH_KEY=XXXXXXXXXX
+NEXT_PUBLIC_ALGOLIA_INDEX_NAME=docs
+```
+
+## Best Practices
+
+1. Keep sensitive information in environment variables
+2. Use descriptive titles and descriptions
+3. Organize sidebar items logically
+4. Test all features after configuration changes
+5. Keep the navigation structure simple
+6. Use consistent naming conventions
+7. Regularly update dependencies and content
+
+## Example Configuration
+
+Here's a complete example configuration:
+
+```js filename="config/docs.js"
+export const docsConfig = {
+  title: 'Your Documentation',
+  description: 'Documentation for your project',
+  
+  meta: {
+    title: {
+      default: 'Your Documentation',
+      template: '%s - Your Documentation'
+    },
+    description: 'Documentation for your project',
+    keywords: ['documentation', 'nextjs', 'react'],
+    authors: [
+      {
+        name: 'Your Name',
+        url: 'https://yourwebsite.com'
+      }
+    ],
+    creator: 'Your Name',
+    themeColor: [
+      { media: '(prefers-color-scheme: light)', color: 'white' },
+      { media: '(prefers-color-scheme: dark)', color: 'black' }
+    ],
+    openGraph: {
+      type: 'website',
+      locale: 'en_US',
+      url: 'https://yourdocs.com',
+      title: 'Your Documentation',
+      description: 'Documentation for your project',
+      siteName: 'Your Documentation'
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: 'Your Documentation',
+      description: 'Documentation for your project',
+      creator: '@yourusername'
+    },
+    icons: {
+      icon: '/favicon.ico',
+      shortcut: '/favicon-16x16.png',
+      apple: '/apple-touch-icon.png'
+    }
+  },
+
+  header: {
+    logo: {
+      text: 'Your Documentation',
+      link: '/',
+      image: '/logo.png'
+    },
+    nav: [
+      {
+        title: 'Documentation',
+        href: '/docs'
+      },
+      {
+        title: 'Blog',
+        href: '/blog'
+      },
+      {
+        title: 'GitHub',
+        href: 'https://github.com/yourusername/yourproject',
+        external: true
+      }
+    ]
+  },
+
+  sidebar: {
+    defaultOpenLevel: 1,
+    collapsible: true,
+    items: [
+      {
+        title: 'Getting Started',
+        items: [
+          {
+            title: 'Introduction',
+            href: '/docs/introduction'
+          },
+          {
+            title: 'Installation',
+            href: '/docs/installation'
+          }
+        ]
+      }
+    ]
+  },
+
+  search: {
+    enabled: true,
+    placeholder: 'Search documentation...',
+    indexing: {
+      includeContent: true,
+      includePath: true,
+      includeTitle: true,
+      includeDescription: true
+    }
+  },
+
+  theme: {
+    defaultTheme: 'system',
+    accentColor: {
+      light: 'blue',
+      dark: 'blue'
+    },
+    codeTheme: {
+      light: 'github-light',
+      dark: 'github-dark'
+    },
+    font: {
+      sans: 'Inter',
+      mono: 'JetBrains Mono'
+    }
+  },
+
+  footer: {
+    credits: {
+      text: 'Built by',
+      link: {
+        text: 'Your Name',
+        href: 'https://yourwebsite.com'
+      }
+    },
+    links: [
+      {
+        text: 'GitHub',
+        href: 'https://github.com/yourusername',
+        icon: 'github'
+      },
+      {
+        text: 'Twitter',
+        href: 'https://twitter.com/yourusername',
+        icon: 'twitter'
+      }
+    ]
+  },
+
+  features: {
+    mdxComponents: true,
+    codeBlocks: {
+      enabled: true,
+      copyButton: true,
+      lineNumbers: true,
+      lineHighlighting: true,
+      wordHighlighting: true,
+      showLanguage: true
+    },
+    darkMode: true,
+    search: true,
+    tableOfContents: {
+      enabled: true,
+      depth: 3,
+      scrollspy: true
+    },
+    pagination: true,
+    editLink: {
+      enabled: true,
+      text: 'Edit this page on GitHub',
+      pattern: 'https://github.com/yourusername/yourproject/edit/main/content/:path'
+    },
+    feedback: {
+      enabled: true,
+      labels: {
+        helpful: 'Was this page helpful?',
+        yes: 'Yes',
+        no: 'No'
+      }
+    },
+    lastUpdated: true,
+    readingTime: true,
+    progressBar: true
+  }
+} 

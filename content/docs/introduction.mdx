@@ -1,0 +1,147 @@
+# Introduction
+
+Welcome to our documentation framework! This modern documentation site builder is built with Next.js, MDX, Tailwind CSS, and other powerful tools to help you create beautiful, searchable, and customizable documentation.
+
+## Features
+
+### 📝 MDX Support
+Write your documentation using MDX, combining Markdown with React components for rich, interactive content.
+
+```mdx filename="example.mdx"
+# Welcome
+
+This is a **Markdown** file with React components:
+
+<Alert>
+  This is an alert component!
+</Alert>
+```
+
+### 🎨 Beautiful UI
+Built with Tailwind CSS and modern design principles, featuring:
+- Clean typography
+- Responsive layout
+- Dark mode support
+- Custom components
+
+### 🔍 Full-Text Search
+Integrated search functionality to help users find content quickly:
+- Real-time search results
+- Content indexing
+- Keyboard navigation
+- Search highlighting
+
+### 📱 Mobile-First
+Fully responsive design that works great on all devices:
+- Mobile navigation
+- Touch-friendly interactions
+- Adaptive layouts
+- Optimized performance
+
+### ⚡️ Performance
+Built for speed and efficiency:
+- Static site generation
+- Automatic image optimization
+- Code splitting
+- Fast page transitions
+
+### 🛠 Developer Experience
+Great developer experience with modern tools:
+- TypeScript support
+- Hot reloading
+- Component library
+- Code highlighting
+
+## Built With
+
+- [Next.js](https://nextjs.org) - React framework
+- [MDX](https://mdxjs.com) - Markdown and React
+- [Tailwind CSS](https://tailwindcss.com) - Utility-first CSS
+- [Rehype Pretty Code](https://rehype-pretty-code.netlify.app) - Syntax highlighting
+- [Radix UI](https://www.radix-ui.com) - Accessible components
+
+## Getting Started
+
+To get started with our documentation framework:
+
+1. Check the [Installation](/docs/installation) guide
+2. Learn about [Configuration](/docs/configuration)
+3. Explore [Code Blocks](/docs/code-blocks)
+4. Customize the [Footer](/docs/footer)
+
+## Example Components
+
+### Alerts
+
+<Alert>
+  This is a default alert
+</Alert>
+
+<Alert variant="destructive">
+  This is a destructive alert
+</Alert>
+
+### Code Blocks
+
+```js filename="example.js"
+function greet(name) {
+  return `Hello, ${name}!`
+}
+
+console.log(greet('World'))
+```
+
+### Tabs
+
+<Tabs defaultValue="npm">
+  <TabsList>
+    <TabsTrigger value="npm">npm</TabsTrigger>
+    <TabsTrigger value="yarn">yarn</TabsTrigger>
+    <TabsTrigger value="pnpm">pnpm</TabsTrigger>
+  </TabsList>
+  <TabsContent value="npm">
+    ```bash
+    npm install
+    ```
+  </TabsContent>
+  <TabsContent value="yarn">
+    ```bash
+    yarn install
+    ```
+  </TabsContent>
+  <TabsContent value="pnpm">
+    ```bash
+    pnpm install
+    ```
+  </TabsContent>
+</Tabs>
+
+### Cards
+
+<Card>
+  <CardHeader>
+    <CardTitle>Card Title</CardTitle>
+    <CardDescription>Card description goes here.</CardDescription>
+  </CardHeader>
+  <CardContent>
+    This is the main content of the card.
+  </CardContent>
+  <CardFooter>
+    <Button>Action</Button>
+  </CardFooter>
+</Card>
+
+## Next Steps
+
+1. **Installation**: Follow our [installation guide](/docs/installation) to set up your documentation site.
+2. **Configuration**: Learn how to [configure](/docs/configuration) your site's appearance and behavior.
+3. **Content**: Start writing your documentation using MDX.
+4. **Customization**: Customize the theme and components to match your brand.
+5. **Deployment**: Deploy your documentation to your preferred hosting platform.
+
+## Need Help?
+
+- Check our [GitHub repository](https://github.com/yourusername/docs-template)
+- Join our [Discord community](https://discord.gg/yourinvite)
+- Read the [FAQ](/docs/faq)
+- Open an [issue](https://github.com/yourusername/docs-template/issues) 

@@ -1,0 +1,190 @@
+# Code Blocks
+
+Our documentation framework includes enhanced code blocks powered by `rehype-pretty-code` with features like syntax highlighting, line numbers, copy button, and more.
+
+## Basic Usage
+
+To create a code block, use triple backticks with an optional language identifier:
+
+```js
+console.log('Hello, world!')
+```
+
+## Language Support
+
+Specify the language after the opening backticks for syntax highlighting:
+
+```python
+def greet(name):
+    print(f"Hello, {name}!")
+```
+
+```css
+.button {
+  background: #000;
+  color: #fff;
+}
+```
+
+```html
+<button class="button">
+  Click me
+</button>
+```
+
+## Adding Filenames
+
+Add a filename to your code block using the `filename` meta string:
+
+```js filename="example.js"
+const greeting = 'Hello, world!'
+console.log(greeting)
+```
+
+## Line Numbers
+
+Enable line numbers by adding `showLineNumbers` to the meta string:
+
+```js showLineNumbers
+function add(a, b) {
+  return a + b
+}
+
+const result = add(1, 2)
+console.log(result) // 3
+```
+
+## Line Highlighting
+
+Highlight specific lines using `{lines}` in the meta string:
+
+```js {1,3-4}
+function multiply(a, b) {
+  // This line isn't highlighted
+  const result = a * b
+  return result
+}
+```
+
+## Word Highlighting
+
+Highlight specific words using `word` in the meta string:
+
+```js /multiply/
+function multiply(a, b) {
+  return a * b
+}
+```
+
+## Copy Button
+
+A copy button is automatically added to all code blocks. Click it to copy the code to your clipboard.
+
+## Configuration
+
+The code block features are configured in `lib/mdx.js`:
+
+```js filename="lib/mdx.js"
+const prettyCodeOptions = {
+  theme: 'github-dark',
+  keepBackground: true,
+  defaultLang: 'plaintext',
+  onVisitLine(node) {
+    if (node.children.length === 0) {
+      node.children = [{ type: 'text', value: ' ' }]
+    }
+  },
+  onVisitHighlightedLine(node) {
+    node.properties.className.push('line--highlighted')
+  },
+  onVisitHighlightedWord(node) {
+    node.properties.className = ['word--highlighted']
+  }
+}
+```
+
+## Styling
+
+Code blocks are styled using Tailwind CSS classes. You can customize their appearance in your CSS:
+
+```css filename="styles/globals.css"
+[data-rehype-pretty-code-fragment] {
+  @apply relative;
+}
+
+[data-rehype-pretty-code-fragment] code {
+  @apply grid min-w-full break-words rounded-none border-0 bg-transparent p-0;
+  counter-reset: line;
+  box-decoration-break: clone;
+}
+
+[data-rehype-pretty-code-fragment] .line {
+  @apply px-4 py-1;
+}
+
+[data-rehype-pretty-code-fragment] [data-line-numbers] .line {
+  @apply px-2;
+  counter-increment: line;
+}
+
+[data-rehype-pretty-code-fragment] [data-line-numbers] .line::before {
+  @apply mr-3 inline-block w-4 text-right text-gray-500;
+  content: counter(line);
+}
+
+[data-rehype-pretty-code-fragment] .line--highlighted {
+  @apply bg-zinc-700/50;
+}
+
+[data-rehype-pretty-code-fragment] .word--highlighted {
+  @apply rounded-md bg-zinc-700/50 p-1;
+}
+
+[data-rehype-pretty-code-fragment] .copy-button {
+  @apply absolute right-2 top-2;
+}
+```
+
+## Examples
+
+### Basic Code Block with Filename
+
+```js filename="example.js"
+const message = 'Hello, world!'
+console.log(message)
+```
+
+### Code Block with Line Numbers and Highlighting
+
+```js filename="math.js" showLineNumbers {2-4}
+class Calculator {
+  add(a, b) {
+    return a + b
+  }
+  
+  subtract(a, b) {
+    return a - b
+  }
+}
+```
+
+### Code Block with Word Highlighting
+
+```js filename="utils.js" /multiply/
+function multiply(a, b) {
+  return a * b
+}
+
+function divide(a, b) {
+  return a / b
+}
+```
+
+## Best Practices
+
+1. Always specify a language for syntax highlighting
+2. Use filenames to provide context
+3. Keep code examples concise and focused
+4. Use line highlighting to emphasize important parts
+5. Add comments to explain complex code
+6. Test that your code examples work 

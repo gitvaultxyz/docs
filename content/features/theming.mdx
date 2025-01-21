@@ -1,0 +1,238 @@
+# Theming
+
+The documentation framework provides a flexible theming system that allows you to customize colors, typography, and other visual aspects of your site.
+
+## Theme Configuration
+
+The theme is configured in `docsConfig.js`:
+
+```js filename="docsConfig.js"
+export const docsConfig = {
+  theme: {
+    accentColor: '#0070f3',
+    font: {
+      sans: 'Inter',
+      mono: 'JetBrains Mono',
+    },
+    radius: '0.5rem',
+  },
+}
+```
+
+## Dark Mode
+
+Dark mode is built-in and can be toggled using the theme switcher in the header. The framework uses `next-themes` for theme management.
+
+### Colors
+
+Colors are defined using CSS variables in `globals.css`:
+
+```css filename="styles/globals.css"
+:root {
+  --background: 0 0% 100%;
+  --foreground: 240 10% 3.9%;
+  --card: 0 0% 100%;
+  --card-foreground: 240 10% 3.9%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 240 10% 3.9%;
+  --primary: 240 5.9% 10%;
+  --primary-foreground: 0 0% 98%;
+  --secondary: 240 4.8% 95.9%;
+  --secondary-foreground: 240 5.9% 10%;
+  --muted: 240 4.8% 95.9%;
+  --muted-foreground: 240 3.8% 46.1%;
+  --accent: 240 4.8% 95.9%;
+  --accent-foreground: 240 5.9% 10%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 240 5.9% 90%;
+  --input: 240 5.9% 90%;
+  --ring: 240 5.9% 10%;
+  --radius: 0.5rem;
+}
+
+.dark {
+  --background: 240 10% 3.9%;
+  --foreground: 0 0% 98%;
+  --card: 240 10% 3.9%;
+  --card-foreground: 0 0% 98%;
+  --popover: 240 10% 3.9%;
+  --popover-foreground: 0 0% 98%;
+  --primary: 0 0% 98%;
+  --primary-foreground: 240 5.9% 10%;
+  --secondary: 240 3.7% 15.9%;
+  --secondary-foreground: 0 0% 98%;
+  --muted: 240 3.7% 15.9%;
+  --muted-foreground: 240 5% 64.9%;
+  --accent: 240 3.7% 15.9%;
+  --accent-foreground: 0 0% 98%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 240 3.7% 15.9%;
+  --input: 240 3.7% 15.9%;
+  --ring: 240 4.9% 83.9%;
+}
+```
+
+## Typography
+
+### Fonts
+
+The framework uses two main fonts:
+- **Sans**: For general text (default: Inter)
+- **Mono**: For code blocks (default: JetBrains Mono)
+
+Configure fonts in `docsConfig.js`:
+
+```js filename="docsConfig.js"
+theme: {
+  font: {
+    sans: 'Inter',
+    mono: 'JetBrains Mono',
+  },
+}
+```
+
+### Font Sizes
+
+Font sizes are controlled by Tailwind CSS classes:
+
+```jsx
+<h1 className="text-4xl font-bold">Heading 1</h1>
+<h2 className="text-3xl font-semibold">Heading 2</h2>
+<h3 className="text-2xl font-semibold">Heading 3</h3>
+<p className="text-base">Regular text</p>
+<p className="text-sm">Small text</p>
+```
+
+## Customizing Components
+
+### Using Tailwind Classes
+
+Components can be customized using Tailwind classes:
+
+```jsx
+<Button className="bg-blue-500 hover:bg-blue-600">
+  Custom Button
+</Button>
+
+<Card className="border-2 border-blue-500">
+  Custom Card
+</Card>
+```
+
+### Component Variants
+
+Many components support variants that can be configured:
+
+```jsx
+<Button variant="outline">Outline Button</Button>
+<Button variant="ghost">Ghost Button</Button>
+
+<Alert variant="default">Default Alert</Alert>
+<Alert variant="destructive">Destructive Alert</Alert>
+```
+
+## Code Syntax Highlighting
+
+Code blocks use custom syntax highlighting themes for light and dark modes:
+
+```js
+// This code block will be syntax highlighted
+function example() {
+  console.log('Hello, world!')
+}
+```
+
+Configure syntax highlighting in `docsConfig.js`:
+
+```js filename="docsConfig.js"
+theme: {
+  codeTheme: {
+    light: 'github-light',
+    dark: 'github-dark',
+  },
+}
+```
+
+## Border Radius
+
+Control the border radius of components:
+
+```js filename="docsConfig.js"
+theme: {
+  radius: '0.5rem', // Default border radius
+}
+```
+
+This affects all components that use the `radius` CSS variable:
+
+```css
+.rounded {
+  border-radius: var(--radius);
+}
+```
+
+## Custom CSS
+
+Add custom CSS in `styles/globals.css`:
+
+```css filename="styles/globals.css"
+@layer base {
+  /* Custom styles here */
+  .custom-heading {
+    @apply text-2xl font-bold text-blue-500;
+  }
+}
+```
+
+## Best Practices
+
+1. **Consistency**: Maintain consistent colors and spacing throughout your site
+2. **Accessibility**: Ensure sufficient color contrast in both light and dark modes
+3. **Typography**: Use appropriate font sizes and line heights for readability
+4. **Responsive**: Test your theme changes across different screen sizes
+5. **Performance**: Minimize custom CSS and prefer Tailwind utilities
+
+## Examples
+
+### Custom Theme Example
+
+```js filename="docsConfig.js"
+export const docsConfig = {
+  theme: {
+    accentColor: '#2563eb', // Blue
+    font: {
+      sans: 'Roboto',
+      mono: 'Fira Code',
+    },
+    radius: '0.75rem',
+    codeTheme: {
+      light: 'github-light',
+      dark: 'dracula',
+    },
+  },
+}
+```
+
+### Custom Colors Example
+
+```css filename="styles/globals.css"
+:root {
+  --primary: 221 83% 53%;    /* Blue */
+  --secondary: 262 83% 58%;  /* Purple */
+  --accent: 316 70% 43%;    /* Pink */
+}
+
+.dark {
+  --primary: 217 91% 60%;    /* Lighter Blue */
+  --secondary: 250 89% 65%;  /* Lighter Purple */
+  --accent: 322 75% 46%;    /* Lighter Pink */
+}
+```
+
+## Next Steps
+
+- Learn about [MDX Support](/features/mdx)
+- Explore [Components](/features/components)
+- Read the [Styling Guide](/guides/styling) 

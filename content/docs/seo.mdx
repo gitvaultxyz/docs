@@ -1,0 +1,205 @@
+# SEO Configuration
+
+Our documentation framework includes comprehensive SEO support with customizable meta tags, OpenGraph data, and Twitter cards.
+
+## Basic Configuration
+
+SEO settings are configured in `config/docs.js`:
+
+```js filename="config/docs.js"
+export const docsConfig = {
+  meta: {
+    title: {
+      default: 'Your Documentation',
+      template: '%s - Your Documentation'
+    },
+    description: 'Your documentation description',
+    keywords: ['documentation', 'nextjs', 'react'],
+    authors: [
+      {
+        name: 'Your Name',
+        url: 'https://yourwebsite.com'
+      }
+    ],
+    creator: 'Your Name',
+    // ... more meta options
+  }
+}
+```
+
+## Using SEO in Pages
+
+The framework provides several ways to add SEO to your pages:
+
+### 1. Default SEO
+
+The default SEO is applied to all pages through the root layout:
+
+```jsx filename="app/layout.jsx"
+import { SEO } from '@/components/seo'
+
+export default function RootLayout({ children }) {
+  return (
+    <html>
+      <SEO />
+      <body>{children}</body>
+    </html>
+  )
+}
+```
+
+### 2. Page-Specific SEO
+
+For individual pages, use the SEO helpers:
+
+```jsx filename="app/docs/[slug]/page.jsx"
+import { SEO } from '@/components/seo'
+import { getDocsSEO } from '@/lib/seo'
+
+export default function DocsPage({ params }) {
+  const seo = getDocsSEO({
+    title: 'Installation Guide',
+    description: 'Learn how to install and set up the project',
+    path: `/docs/${params.slug}`,
+    image: '/og-image.png'
+  })
+
+  return (
+    <>
+      <SEO {...seo} />
+      {/* Page content */}
+    </>
+  )
+}
+```
+
+### 3. Blog Post SEO
+
+For blog posts, use the blog-specific SEO helper:
+
+```jsx filename="app/blog/[slug]/page.jsx"
+import { SEO } from '@/components/seo'
+import { getBlogSEO } from '@/lib/seo'
+
+export default function BlogPost({ post }) {
+  const seo = getBlogSEO({
+    title: post.title,
+    description: post.excerpt,
+    path: `/blog/${post.slug}`,
+    image: post.coverImage,
+    tags: post.tags
+  })
+
+  return (
+    <>
+      <SEO {...seo} />
+      {/* Blog post content */}
+    </>
+  )
+}
+```
+
+## Meta Tags
+
+The SEO component includes:
+
+- Basic meta tags (title, description, keywords)
+- Author and creator information
+- Theme color support
+- OpenGraph meta tags
+- Twitter card meta tags
+- Favicon and icon links
+- Canonical URL
+
+## OpenGraph
+
+Configure OpenGraph data for rich social media previews:
+
+```js filename="config/docs.js"
+openGraph: {
+  type: 'website',
+  locale: 'en_US',
+  url: 'https://yourdocs.com',
+  title: 'Your Documentation',
+  description: 'Your documentation description',
+  siteName: 'Your Documentation'
+}
+```
+
+## Twitter Cards
+
+Configure Twitter card data:
+
+```js filename="config/docs.js"
+twitter: {
+  card: 'summary_large_image',
+  title: 'Your Documentation',
+  description: 'Your documentation description',
+  creator: '@yourusername'
+}
+```
+
+## Icons
+
+Configure various icons for different platforms:
+
+```js filename="config/docs.js"
+icons: {
+  icon: '/favicon.ico',
+  shortcut: '/favicon-16x16.png',
+  apple: '/apple-touch-icon.png'
+}
+```
+
+## Best Practices
+
+1. Always provide unique titles and descriptions for each page
+2. Include relevant keywords
+3. Provide high-quality OpenGraph images
+4. Use descriptive URLs
+5. Keep meta descriptions between 150-160 characters
+6. Test your meta tags using social media preview tools
+
+## Helper Functions
+
+The framework includes several SEO helper functions:
+
+### getPageSEO
+
+Basic SEO for any page:
+
+```js
+const seo = getPageSEO({
+  title: 'Page Title',
+  description: 'Page description',
+  path: '/page-path',
+  image: '/page-image.png'
+})
+```
+
+### getDocsSEO
+
+SEO optimized for documentation pages:
+
+```js
+const seo = getDocsSEO({
+  title: 'Documentation Title',
+  description: 'Documentation description',
+  path: '/docs/path',
+  image: '/docs-image.png'
+})
+```
+
+### getBlogSEO
+
+SEO optimized for blog posts:
+
+```js
+const seo = getBlogSEO({
+  title: 'Blog Post Title',
+  description: 'Blog post description',
+  path: '/blog/post-slug',
+  image: '/post-image.png',
+  tags: ['nextjs', 'react', 'documentation']
+})
+``` 

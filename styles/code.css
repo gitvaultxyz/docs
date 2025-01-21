@@ -1,0 +1,63 @@
+/* Code block styles */
+pre {
+  overflow-x: auto;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+pre code {
+  display: grid;
+  min-width: 100%;
+  font-family: var(--font-mono);
+}
+
+/* Line numbers */
+code {
+  counter-reset: line;
+}
+
+code > [data-line]::before {
+  counter-increment: line;
+  content: counter(line);
+  display: inline-block;
+  width: 1.5rem;
+  margin-right: 1rem;
+  text-align: right;
+  color: hsl(var(--muted-foreground));
+}
+
+/* Line highlighting */
+[data-line] {
+  padding: 0 1rem;
+  border-left: 2px solid transparent;
+}
+
+[data-line].highlighted {
+  background: hsl(var(--muted));
+  border-left: 2px solid hsl(var(--primary));
+}
+
+/* Word highlighting */
+[data-highlighted-chars] {
+  background: hsl(var(--muted));
+  padding: 0.2rem 0;
+  border-radius: 0.25rem;
+}
+
+/* Language display */
+[data-language] {
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  color: hsl(var(--muted-foreground));
+  margin-bottom: 0.5rem;
+}
+
+/* Inline code */
+:not(pre) > code {
+  background: hsl(var(--muted));
+  padding: 0.2rem 0.4rem;
+  border-radius: 0.25rem;
+  font-size: 0.875rem;
+  font-family: var(--font-mono);
+  word-break: break-word;
+} 

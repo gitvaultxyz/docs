@@ -1,0 +1,41 @@
+import {
+  AlertTriangle,
+  AlertOctagon,
+  Book,
+  FileText,
+  Menu,
+  Search,
+  Settings,
+  Download,
+  Paintbrush,
+  Component,
+  Palette,
+  Code,
+  AlertCircle,
+  Info,
+  Brush,
+  Grid,
+  Github,
+  ArrowRight
+} from 'lucide-react'
+
+export const Icons = {
+  alertTriangle: AlertTriangle,
+  alertOctagon: AlertOctagon,
+  book: Book,
+  fileText: FileText,
+  menu: Menu,
+  search: Search,
+  settings: Settings,
+  download: Download,
+  paintbrush: Paintbrush,
+  component: Component,
+  palette: Palette,
+  code: Code,
+  alertCircle: AlertCircle,
+  info: Info,
+  brush: Brush,
+  grid: Grid,
+  github: Github,
+  arrowRight: ArrowRight
+} 
