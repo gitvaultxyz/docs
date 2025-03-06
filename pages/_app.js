@@ -2,6 +2,8 @@ import { Inter as FontSans } from "next/font/google"
 import { ThemeProvider } from '../components/theme-provider'
 import { cn } from '../lib/utils'
 import '../styles/globals.css'
+import Head from 'next/head'
+import { docsConfig } from '@/config/docs'
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -14,6 +16,12 @@ export default function App({ Component, pageProps }) {
 
   return (
     <>
+      <Head>
+        <title>{docsConfig.site.title}</title>
+        <meta name="description" content={docsConfig.site.description} />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href={docsConfig.site.favicon} />
+      </Head>
       <style jsx global>{`
         :root {
           --font-sans: ${fontSans.style.fontFamily};
