@@ -68,9 +68,9 @@ export const docsConfig = {
             icon: "book",
           },
           {
-            title: "Installation",
-            href: "/installation",
-            icon: "download",
+            title: "Setup",
+            href: "/setup",
+            icon: "wrench",
           },
           {
             title: "Configuration",
@@ -135,12 +135,12 @@ export const docsConfig = {
         ],
       },
       {
-        title: "Components",
+        title: "Research",
         items: [
           {
-            title: "Overview",
+            title: "Academic paper",
             href: "/components",
-            icon: "grid",
+            icon: "scroll",
           },
         ],
       },
@@ -237,18 +237,18 @@ export const docsConfig = {
     },
     {
       title: 'Discord',
-      href: '/components/alert',
+      href: 'https://discord.gg/gN3fPns7Qz',
     },
     {
       title: 'Homepage',
-      href: '/features/mdx',
+      href: 'https://gitvault.xyz',
     },
   ],
 
   // Landing page configuration
   landing: {
     hero: {
-      title: "GitVault - Developer Documentation",
+      title: "GitVault - Documentation",
       description: "Add superpowers to your GitHub codebase with censorship-resistant & automated repository backups. Defend against censorship!",
       buttons: [
         {
@@ -256,19 +256,13 @@ export const docsConfig = {
           href: "/introduction",
           variant: "default"
         },
-        {
-          text: "Sign In",
-          href: "https://github.com/yourusername/docs",
-          variant: "outline",
-          icon: "github"
-        }
       ]
     },
     bentoGrid: {
       items: [
         {
           type: "image",
-          title: "What is DeDocs?",
+          title: "What is GitVault?",
           image: "/card1.png",
           href: "/introduction"
         },
@@ -336,7 +330,7 @@ export const docsConfig = {
       },
       {
         title: 'Discord',
-        href: 'https://discord.gg/yourinvite',
+        href: 'https://discord.gg/gN3fPns7Qz',
         icon: 'discord',
       },
     ],

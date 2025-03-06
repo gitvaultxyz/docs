@@ -6,6 +6,13 @@ import { Icons } from '../icons'
 export function DocsSidebar({ items = [], className }) {
   const pathname = usePathname()
 
+  // Helper function to get icon component
+  const getIcon = (iconName) => {
+    if (!iconName) return null
+    // Try to get the icon directly from Icons object
+    return Icons[iconName] || null
+  }
+
   return (
     <div className={cn("relative", className)}>
       <div className="space-y-4">
@@ -16,7 +23,7 @@ export function DocsSidebar({ items = [], className }) {
             </h4>
             <div className="grid grid-flow-row auto-rows-max text-sm">
               {group.items.map((item, itemIndex) => {
-                const Icon = item.icon ? Icons[item.icon] : null
+                const Icon = getIcon(item.icon)
                 return (
                   <Link
                     key={itemIndex}

@@ -1,0 +1,25 @@
+---
+title: Setup
+description: Learn about the ways to get started with using GitVault
+---
+
+## Ways to setup GitVault
+
+GitVault can be used in mutliple ways :
+
+### 1. Using GitVault Web App
+This is the easiest way to get started with GitVault. You can sign in with your GitHub account to view all your repositories. Simply click the backup button on the repository you want to backup to start configuring.
+
+<Alert variant="info">
+  <AlertTitle>Privacy</AlertTitle>
+  <AlertDescription>
+    You will be required to allow *READ and WRITE* permissions on the GitHub OAuth to allow GitVault to create the necessary workflow files for CI. GitVault does not intend to store your GitHub tokens anywhere except on the client side. However, if you are uncomfortable with this, you can revoke the token after workflow setup or use the other methods to setup GitVault.
+  </AlertDescription>
+</Alert>
+
+
+### 2. Using GitVault CLI (Coming soon)
+In this method, you will be able to create the workflow file manually in your local repository and push it to the remote to setup the workflow. This method does not require any GitHub OAuth permissions as the workflow files are created manually by yourself.
+
+### 3. Using GitHub Actions Marketplace (Coming soon)
+If you don't wish to use the web app or the CLI, simply search for GitVault in the GitHub Actions Marketplace and pick some of our popular pre-configured workflows into your repository.

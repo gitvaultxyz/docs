@@ -16,7 +16,9 @@ import {
   Brush,
   Grid,
   Github,
-  ArrowRight
+  ArrowRight,
+  Wrench,
+  ScrollText
 } from 'lucide-react'
 
 export const Icons = {
@@ -37,5 +39,7 @@ export const Icons = {
   brush: Brush,
   grid: Grid,
   github: Github,
-  arrowRight: ArrowRight
+  arrowRight: ArrowRight,
+  wrench: Wrench,
+  scroll: ScrollText
 } 
